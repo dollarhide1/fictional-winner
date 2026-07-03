@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nursing Career Pathways &amp; Action Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+/* ============ PALETTES (light, muted pastels) ============ */
+:root{
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 1px 2px rgba(40,40,55,.04), 0 8px 24px -12px rgba(40,40,55,.18);
+  --shadow-soft: 0 1px 2px rgba(40,40,55,.03), 0 4px 14px -10px rgba(40,40,55,.14);
+  --ease: cubic-bezier(.4,.14,.3,1);
+}
+
+/* Sage & Sand (default) */
+[data-theme="sage"]{
+  --bg:#f3f4ee; --bg-tint:#eceee4;
+  --surface:#fbfcf8; --surface-2:#f1f3ea;
+  --ink:#33392f; --ink-soft:#6a7164; --ink-faint:#98a08f;
+  --accent:#7d9b76; --accent-deep:#5f7d59; --accent-wash:#e4ebdf;
+  --border:#dfe3d6; --border-soft:#e8ebe1;
+  --pill:#e9efe3;
+}
+/* Powder Blue */
+[data-theme="powder"]{
+  --bg:#eef2f5; --bg-tint:#e6ecf1;
+  --surface:#fafcfd; --surface-2:#eef3f7;
+  --ink:#2f363d; --ink-soft:#5f6b76; --ink-faint:#92a0ad;
+  --accent:#7fa1bd; --accent-deep:#5d83a3; --accent-wash:#e2eaf2;
+  --border:#d8e0e8; --border-soft:#e4eaf0;
+  --pill:#e6edf4;
+}
+/* Dusty Rose */
+[data-theme="rose"]{
+  --bg:#f6f0f0; --bg-tint:#f0e7e8;
+  --surface:#fdf9f9; --surface-2:#f5edee;
+  --ink:#3c3335; --ink-soft:#76666a; --ink-faint:#a8959a;
+  --accent:#bd8b95; --accent-deep:#a06a76; --accent-wash:#f0e2e4;
+  --border:#e7d8db; --border-soft:#efe3e5;
+  --pill:#f1e3e5;
+}
+/* Lavender Mist */
+[data-theme="lavender"]{
+  --bg:#f1eff6; --bg-tint:#eae7f1;
+  --surface:#fbfaff; --surface-2:#f0edf6;
+  --ink:#37333f; --ink-soft:#6b6678; --ink-faint:#9c97aa;
+  --accent:#9b8fc0; --accent-deep:#7d6fa7; --accent-wash:#e8e3f2;
+  --border:#ddd7ea; --border-soft:#e7e2f0;
+  --pill:#e9e4f3;
+}
+/* Peach Blossom */
+[data-theme="peach"]{
+  --bg:#f8f1ea; --bg-tint:#f3e9df;
+  --surface:#fefaf6; --surface-2:#f7efe7;
+  --ink:#3e352e; --ink-soft:#7b6c5f; --ink-faint:#ad9c8c;
+  --accent:#cf9a78; --accent-deep:#b27a55; --accent-wash:#f3e5d8;
+  --border:#ecdfd2; --border-soft:#f1e8de;
+  --pill:#f4e6da;
+}
+/* Sea Glass */
+[data-theme="seaglass"]{
+  --bg:#ecf3f1; --bg-tint:#e3ede9;
+  --surface:#f9fcfb; --surface-2:#edf4f1;
+  --ink:#2e3a36; --ink-soft:#5d6f69; --ink-faint:#90a39c;
+  --accent:#76b0a0; --accent-deep:#54917f; --accent-wash:#dcebe5;
+  --border:#d4e3dd; --border-soft:#e1ece7;
+  --pill:#e0ece7;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:"Nunito Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  transition:background .5s var(--ease), color .5s var(--ease);
+}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.15;margin:0;color:var(--ink);}
+p{margin:0 0 .9rem;}
+a{color:var(--accent-deep);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;}
+a:hover{border-color:var(--accent);}
+button{font-family:inherit;cursor:pointer;}
+
+/* ============ HEADER ============ */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter:saturate(1.4) blur(12px);
+  border-bottom:1px solid var(--border-soft);
+}
+.topbar-inner{
+  max-width:1080px;margin:0 auto;padding:.85rem clamp(1rem,4vw,2rem);
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:.7rem;margin-right:auto;}
+.brand-mark{
+  width:38px;height:38px;border-radius:11px;flex:none;
+  background:var(--accent-wash);border:1px solid var(--border);
+  display:grid;place-items:center;color:var(--accent-deep);
+}
+.brand-mark svg{width:21px;height:21px;}
+.brand-name{font-family:"Fraunces",serif;font-weight:600;font-size:1.12rem;letter-spacing:-.01em;}
+.brand-sub{font-size:.72rem;color:var(--ink-faint);letter-spacing:.04em;text-transform:uppercase;}
+
+/* palette switcher */
+.palette{display:flex;align-items:center;gap:.45rem;}
+.palette-label{font-size:.72rem;color:var(--ink-faint);letter-spacing:.03em;text-transform:uppercase;font-weight:700;}
+.swatches{display:flex;gap:.34rem;}
+.swatch{
+  width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);
+  outline:1px solid var(--border);cursor:pointer;padding:0;
+  box-shadow:0 1px 3px rgba(0,0,0,.08);transition:transform .18s var(--ease);
+}
+.swatch:hover{transform:scale(1.14);}
+.swatch[aria-pressed="true"]{outline:2px solid var(--ink-soft);transform:scale(1.08);}
+.sw-sage{background:linear-gradient(135deg,#a9c2a1,#7d9b76);}
+.sw-powder{background:linear-gradient(135deg,#a8c4dc,#7fa1bd);}
+.sw-rose{background:linear-gradient(135deg,#dcb3bb,#bd8b95);}
+.sw-lavender{background:linear-gradient(135deg,#c2b6df,#9b8fc0);}
+.sw-peach{background:linear-gradient(135deg,#e7bd9d,#cf9a78);}
+.sw-seaglass{background:linear-gradient(135deg,#a3d0c2,#76b0a0);}
+
+/* ============ TABS ============ */
+.tabs{
+  max-width:1080px;margin:0 auto;padding:0 clamp(1rem,4vw,2rem);
+  display:flex;gap:.3rem;overflow-x:auto;scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{
+  appearance:none;background:none;border:none;
+  padding:.85rem .15rem;margin-right:1.4rem;white-space:nowrap;
+  color:var(--ink-faint);font-weight:700;font-size:.95rem;
+  border-bottom:2.5px solid transparent;transition:color .2s,border-color .2s;
+}
+.tab:hover{color:var(--ink-soft);}
+.tab[aria-selected="true"]{color:var(--ink);border-color:var(--accent);}
+.tab .tnum{font-family:"Fraunces",serif;font-size:.78rem;color:var(--accent-deep);margin-right:.45rem;}
+
+/* ============ LAYOUT ============ */
+main{max-width:1080px;margin:0 auto;padding:clamp(1.6rem,4vw,2.8rem) clamp(1rem,4vw,2rem) 5rem;}
+.panel{display:none;animation:fade .45s var(--ease);}
+.panel.active{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+.eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:.6rem;}
+.lede{font-size:clamp(1.05rem,2.4vw,1.22rem);color:var(--ink-soft);max-width:60ch;}
+.h-hero{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.02em;margin-bottom:.7rem;}
+.h-hero em{font-style:italic;color:var(--accent-deep);}
+.section-head{margin:2.6rem 0 1.1rem;}
+.section-head h2{font-size:clamp(1.4rem,3vw,1.85rem);letter-spacing:-.01em;}
+.section-head p{color:var(--ink-soft);margin-top:.3rem;}
+
+/* ============ JOURNEY MAP (signature) ============ */
+.journey{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.6rem clamp(1rem,3vw,1.8rem);margin-top:1.8rem;box-shadow:var(--shadow-soft);
+}
+.journey-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:1.3rem;flex-wrap:wrap;}
+.journey-top h3{font-size:1.2rem;}
+.journey-top span{font-size:.84rem;color:var(--ink-faint);}
+.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;position:relative;}
+.stage{
+  position:relative;text-align:center;padding:.4rem .3rem;border-radius:var(--radius-sm);
+}
+.stage-dot{
+  width:46px;height:46px;margin:0 auto .6rem;border-radius:50%;
+  background:var(--accent-wash);border:1.5px solid var(--border);
+  display:grid;place-items:center;color:var(--accent-deep);position:relative;z-index:2;
+  font-family:"Fraunces",serif;font-weight:600;
+}
+.stages::before{
+  content:"";position:absolute;top:23px;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,var(--border),var(--accent),var(--border));z-index:1;
+}
+.stage-name{font-weight:800;font-size:.9rem;}
+.stage-desc{font-size:.76rem;color:var(--ink-faint);margin-top:.15rem;line-height:1.35;}
+@media(max-width:680px){
+  .stages{grid-template-columns:1fr;gap:.2rem;}
+  .stages::before{top:0;bottom:0;left:23px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,var(--border),var(--accent),var(--border));}
+  .stage{display:grid;grid-template-columns:46px 1fr;gap:.8rem;text-align:left;align-items:center;padding:.5rem .3rem;}
+  .stage-dot{margin:0;}
+}
+
+/* ============ FILTER CHIPS ============ */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.4rem 0 .4rem;}
+.chip{
+  background:var(--surface);border:1px solid var(--border);color:var(--ink-soft);
+  padding:.42rem .95rem;border-radius:999px;font-size:.85rem;font-weight:700;
+  transition:all .2s var(--ease);
+}
+.chip:hover{border-color:var(--accent);color:var(--ink);}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+/* ============ PATHWAY CARDS ============ */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1rem;margin-top:1.2rem;}
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow-soft);overflow:hidden;transition:box-shadow .25s,transform .25s,border-color .25s;
+  display:flex;flex-direction:column;
+}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:var(--accent-wash);}
+.card-head{padding:1.15rem 1.25rem .4rem;cursor:pointer;}
+.card-tier{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent-deep);background:var(--pill);padding:.22rem .6rem;border-radius:999px;margin-bottom:.6rem;}
+.card h3{font-size:1.16rem;letter-spacing:-.01em;margin-bottom:.25rem;}
+.card-tagline{font-size:.86rem;color:var(--ink-faint);}
+.card-meta{display:flex;gap:1.2rem;padding:.7rem 1.25rem;flex-wrap:wrap;}
+.meta-item{font-size:.82rem;}
+.meta-item b{display:block;font-family:"Fraunces",serif;font-size:.95rem;color:var(--ink);font-weight:600;}
+.meta-item span{color:var(--ink-faint);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;}
+.card-toggle{
+  margin:0 1.25rem 1.1rem;margin-top:auto;display:flex;align-items:center;justify-content:space-between;
+  width:calc(100% - 2.5rem);background:var(--surface-2);border:1px solid var(--border-soft);
+  border-radius:var(--radius-sm);padding:.6rem .9rem;color:var(--ink-soft);font-weight:700;font-size:.85rem;
+  transition:background .2s;
+}
+.card-toggle:hover{background:var(--accent-wash);color:var(--ink);}
+.card-toggle svg{width:16px;height:16px;transition:transform .3s var(--ease);}
+.card.open .card-toggle svg{transform:rotate(180deg);}
+.card-detail{
+  max-height:0;overflow:hidden;transition:max-height .45s var(--ease);
+  border-top:1px solid transparent;
+}
+.card.open .card-detail{max-height:1400px;border-top-color:var(--border-soft);}
+.detail-inner{padding:1.1rem 1.25rem 1.3rem;}
+.detail-block{margin-bottom:1.05rem;}
+.detail-block:last-child{margin-bottom:0;}
+.detail-block h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-deep);margin-bottom:.45rem;font-family:"Nunito Sans",sans-serif;font-weight:800;}
+.detail-block p{font-size:.9rem;margin:0;color:var(--ink-soft);}
+.detail-list{list-style:none;margin:0;padding:0;}
+.detail-list li{font-size:.89rem;color:var(--ink-soft);padding:.28rem 0 .28rem 1.4rem;position:relative;}
+.detail-list li::before{content:"";position:absolute;left:.2rem;top:.85rem;width:6px;height:6px;border-radius:50%;background:var(--accent);}
+.detail-list.steps{counter-reset:s;}
+.detail-list.steps li{padding-left:1.9rem;}
+.detail-list.steps li::before{display:none;}
+.detail-list.steps li::after{counter-increment:s;content:counter(s);position:absolute;left:0;top:.34rem;width:1.25rem;height:1.25rem;
+  background:var(--accent-wash);color:var(--accent-deep);border-radius:50%;font-size:.7rem;font-weight:800;display:grid;place-items:center;}
+.res-links{display:flex;flex-wrap:wrap;gap:.4rem;}
+.res-links a{font-size:.82rem;background:var(--surface-2);border:1px solid var(--border-soft);padding:.32rem .7rem;border-radius:999px;color:var(--ink-soft);}
+.res-links a:hover{border-color:var(--accent);color:var(--accent-deep);}
+.add-plan{
+  margin-top:1.1rem;width:100%;background:var(--accent);color:#fff;border:none;
+  padding:.7rem;border-radius:var(--radius-sm);font-weight:800;font-size:.88rem;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;transition:background .2s,transform .1s;
+}
+.add-plan:hover{background:var(--accent-deep);}
+.add-plan:active{transform:scale(.985);}
+.add-plan svg{width:16px;height:16px;}
+
+/* ============ GETTING STARTED ============ */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1.5rem;}
+.step-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.4rem;box-shadow:var(--shadow-soft);position:relative;
+}
+.step-num{font-family:"Fraunces",serif;font-size:2.4rem;color:var(--accent-wash);line-height:1;position:absolute;top:1rem;right:1.2rem;}
+.step-card h3{font-size:1.1rem;margin-bottom:.5rem;max-width:80%;}
+.step-card p{font-size:.9rem;color:var(--ink-soft);margin:0;}
+.timeline{margin-top:2.4rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem clamp(1rem,3vw,1.8rem);box-shadow:var(--shadow-soft);}
+.timeline h3{font-size:1.2rem;margin-bottom:1.2rem;}
+.tl-row{display:grid;grid-template-columns:130px 1fr;gap:1rem;padding:.85rem 0;border-top:1px solid var(--border-soft);}
+.tl-row:first-of-type{border-top:none;}
+.tl-when{font-family:"Fraunces",serif;font-weight:600;color:var(--accent-deep);font-size:.95rem;}
+.tl-what{font-size:.9rem;color:var(--ink-soft);}
+.tl-what b{color:var(--ink);font-weight:700;}
+@media(max-width:560px){.tl-row{grid-template-columns:1fr;gap:.2rem;}}
+
+/* callout */
+.callout{display:flex;gap:1rem;background:var(--accent-wash);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem 1.4rem;margin-top:1.8rem;}
+.callout svg{width:24px;height:24px;color:var(--accent-deep);flex:none;margin-top:.15rem;}
+.callout h4{font-size:1rem;margin-bottom:.3rem;}
+.callout p{font-size:.9rem;color:var(--ink-soft);margin:0;}
+
+/* ============ INSTRUCTIONS / GUIDE ============ */
+.guide{display:flex;flex-direction:column;gap:.85rem;margin-top:1.6rem;}
+.guide-item{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.25rem 1.4rem;box-shadow:var(--shadow-soft);
+  display:grid;grid-template-columns:54px 1fr;gap:1.1rem;align-items:start;
+}
+.guide-badge{
+  width:54px;height:54px;border-radius:14px;background:var(--accent-wash);border:1px solid var(--border);
+  display:grid;place-items:center;color:var(--accent-deep);font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;
+}
+.guide-badge svg{width:24px;height:24px;}
+.guide-body h3{font-size:1.12rem;margin-bottom:.3rem;}
+.guide-body > p{font-size:.92rem;color:var(--ink-soft);margin:0 0 .7rem;}
+.guide-do{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.4rem;}
+.guide-do li{font-size:.89rem;color:var(--ink-soft);padding-left:1.5rem;position:relative;}
+.guide-do li::before{content:"";position:absolute;left:.15rem;top:.55rem;width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(45deg);}
+.guide-do li b{color:var(--ink);font-weight:700;}
+@media(max-width:560px){.guide-item{grid-template-columns:1fr;}.guide-badge{width:46px;height:46px;}}
+
+/* ============ RESOURCES ============ */
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem;margin-top:1.5rem;}
+.res-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem;box-shadow:var(--shadow-soft);}
+.res-card h3{font-size:1rem;margin-bottom:.2rem;}
+.res-card .res-cat{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-deep);font-weight:800;margin-bottom:.7rem;}
+.res-card ul{list-style:none;margin:0;padding:0;}
+.res-card li{padding:.45rem 0;border-top:1px solid var(--border-soft);font-size:.88rem;}
+.res-card li:first-child{border-top:none;}
+.res-card li a{font-weight:700;}
+.res-card li .res-note{display:block;font-size:.78rem;color:var(--ink-faint);}
+
+/* ============ ACTION PLAN ============ */
+.plan-wrap{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:1.6rem;}
+.plan-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem clamp(1.1rem,3vw,1.7rem);box-shadow:var(--shadow-soft);}
+.plan-card > h3{font-size:1.15rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.55rem;}
+.plan-card > h3 .pc-icon{width:30px;height:30px;border-radius:9px;background:var(--accent-wash);display:grid;place-items:center;color:var(--accent-deep);flex:none;}
+.plan-card > h3 .pc-icon svg{width:17px;height:17px;}
+.plan-card > .pc-hint{font-size:.85rem;color:var(--ink-faint);margin-bottom:1.1rem;}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:600px){.field-grid{grid-template-columns:1fr;}}
+.field{display:flex;flex-direction:column;gap:.35rem;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:.78rem;font-weight:800;letter-spacing:.02em;color:var(--ink-soft);text-transform:uppercase;}
+.field input,.field select,.field textarea{
+  font-family:inherit;font-size:.95rem;color:var(--ink);
+  background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:.65rem .8rem;width:100%;transition:border-color .2s,box-shadow .2s;
+}
+.field textarea{resize:vertical;min-height:80px;line-height:1.55;}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash);
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-faint);}
+
+/* milestones */
+.milestones{display:flex;flex-direction:column;gap:.85rem;margin-top:.4rem;}
+.milestone{
+  background:var(--surface-2);border:1px solid var(--border-soft);border-radius:var(--radius-sm);
+  padding:1rem;display:grid;grid-template-columns:1fr 150px 140px 40px;gap:.7rem;align-items:end;
+}
+.milestone .field label{font-size:.68rem;}
+.milestone .field input,.milestone .field select{background:var(--surface);padding:.5rem .65rem;font-size:.88rem;}
+.ms-note{grid-column:1/-1;}
+.ms-remove{
+  width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--surface);
+  color:var(--ink-faint);display:grid;place-items:center;transition:all .2s;align-self:end;
+}
+.ms-remove:hover{color:#b5564f;border-color:#e3b3af;background:#fbeeed;}
+.ms-remove svg{width:16px;height:16px;}
+@media(max-width:680px){.milestone{grid-template-columns:1fr 1fr;}.ms-remove{grid-column:2;justify-self:end;}}
+.add-ms{
+  margin-top:.4rem;align-self:flex-start;background:var(--surface-2);border:1px dashed var(--border);
+  color:var(--ink-soft);padding:.6rem 1.1rem;border-radius:var(--radius-sm);font-weight:700;font-size:.88rem;
+  display:flex;align-items:center;gap:.5rem;transition:all .2s;
+}
+.add-ms:hover{border-color:var(--accent);color:var(--accent-deep);background:var(--accent-wash);}
+.add-ms svg{width:16px;height:16px;}
+
+/* quick wins */
+.quickwins{display:grid;grid-template-columns:1fr;gap:.6rem;}
+.qw-row{display:flex;align-items:center;gap:.7rem;}
+.qw-row span{font-family:"Fraunces",serif;color:var(--accent-deep);font-weight:600;width:1.5rem;flex:none;}
+
+/* action bar */
+.actionbar{
+  position:sticky;bottom:0;z-index:30;margin-top:1.6rem;
+  background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(10px);
+  border:1px solid var(--border);border-radius:var(--radius);padding:.9rem 1rem;
+  display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;box-shadow:var(--shadow);
+}
+.actionbar .ab-status{font-size:.82rem;color:var(--ink-faint);margin-right:auto;display:flex;align-items:center;gap:.45rem;}
+.actionbar .ab-status svg{width:15px;height:15px;}
+.btn{
+  border:none;border-radius:var(--radius-sm);padding:.7rem 1.3rem;font-weight:800;font-size:.9rem;
+  display:inline-flex;align-items:center;gap:.5rem;transition:all .18s var(--ease);
+}
+.btn svg{width:16px;height:16px;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{background:var(--accent-deep);}
+.btn-ghost{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--border);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--ink);}
+.btn-danger{background:transparent;color:#b5564f;border:1px solid #e3b3af;}
+.btn-danger:hover{background:#fbeeed;}
+.btn:active{transform:scale(.97);}
+
+/* toast */
+.toast{
+  position:fixed;bottom:1.4rem;left:50%;transform:translateX(-50%) translateY(120%);
+  background:var(--ink);color:var(--surface);padding:.8rem 1.4rem;border-radius:999px;
+  font-weight:700;font-size:.9rem;box-shadow:var(--shadow);z-index:100;opacity:0;
+  transition:transform .35s var(--ease),opacity .35s;display:flex;align-items:center;gap:.55rem;max-width:min(90vw,460px);
+}
+.toast svg{width:17px;height:17px;flex:none;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+footer{max-width:1080px;margin:0 auto;padding:2rem clamp(1rem,4vw,2rem) 3rem;color:var(--ink-faint);font-size:.8rem;border-top:1px solid var(--border-soft);}
+footer p{margin:.2rem 0;}
+
+/* ============ PRINT DOCUMENT ============ */
+.print-doc{display:none;}
+@media print{
+  @page{margin:18mm 16mm;}
+  body{background:#fff;color:#1f2420;}
+  .topbar,.tabs,main,footer,.toast{display:none !important;}
+  .print-doc{display:block;font-family:"Nunito Sans",sans-serif;}
+  .pd-header{border-bottom:2px solid #c9d3c4;padding-bottom:14px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:flex-end;}
+  .pd-kicker{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:#7d9b76;font-weight:800;}
+  .pd-title{font-family:"Fraunces",serif;font-size:24pt;font-weight:600;margin:4px 0 0;color:#2b332a;}
+  .pd-for{text-align:right;font-size:9pt;color:#6a7164;}
+  .pd-for b{font-size:13pt;color:#2b332a;font-family:"Fraunces",serif;font-weight:600;display:block;}
+  .pd-goal{background:#eef2ea;border:1px solid #d8e0d3;border-radius:10px;padding:14px 18px;margin-bottom:20px;}
+  .pd-goal .lbl{font-size:8.5pt;letter-spacing:.12em;text-transform:uppercase;color:#5f7d59;font-weight:800;margin-bottom:3px;}
+  .pd-goal .big{font-family:"Fraunces",serif;font-size:15pt;color:#2b332a;}
+  .pd-goal .why{font-size:10pt;color:#4a5246;margin-top:8px;font-style:italic;}
+  .pd-section{margin-bottom:20px;break-inside:avoid;}
+  .pd-section h3{font-family:"Fraunces",serif;font-size:13pt;color:#2b332a;border-bottom:1px solid #dde4d8;padding-bottom:5px;margin-bottom:10px;}
+  .pd-cols{display:flex;gap:24px;}
+  .pd-cols > div{flex:1;}
+  .pd-cols .lbl{font-size:8.5pt;letter-spacing:.1em;text-transform:uppercase;color:#5f7d59;font-weight:800;margin-bottom:3px;}
+  .pd-cols p{font-size:10.5pt;color:#33392f;margin:0 0 10px;}
+  table.pd-table{width:100%;border-collapse:collapse;font-size:10pt;}
+  table.pd-table th{text-align:left;background:#eef2ea;color:#3c4538;font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;padding:7px 9px;border:1px solid #d8e0d3;}
+  table.pd-table td{padding:7px 9px;border:1px solid #e2e8dd;color:#33392f;vertical-align:top;}
+  table.pd-table td .ms-cat{font-size:8pt;color:#7d9b76;text-transform:uppercase;letter-spacing:.05em;font-weight:800;}
+  .pd-status{font-size:8.5pt;font-weight:800;padding:2px 8px;border-radius:999px;display:inline-block;}
+  .st-done{background:#e0ecdb;color:#4f7a47;}
+  .st-prog{background:#f4ecd8;color:#9a7a35;}
+  .st-todo{background:#eceae6;color:#76706a;}
+  .pd-list{margin:0;padding-left:18px;}
+  .pd-list li{font-size:10.5pt;color:#33392f;margin-bottom:4px;}
+  .pd-foot{margin-top:26px;padding-top:12px;border-top:1px solid #dde4d8;font-size:8.5pt;color:#8a917f;display:flex;justify-content:space-between;}
+}
+</style>
+</head>
+<body data-theme="sage">
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-4.35-9-8.5C1.5 9.5 3 5.5 6.5 5.5c2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4C21 5.5 22.5 9.5 21 12.5 18.5 16.65 12 21 12 21Z"/><path d="M12 9v6M9 12h6"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">Nursing Pathways</div>
+        <div class="brand-sub">Career Compass &amp; Action Plan</div>
+      </div>
+    </div>
+    <div class="palette" role="group" aria-label="Choose a color palette">
+      <span class="palette-label">Palette</span>
+      <div class="swatches">
+        <button class="swatch sw-sage" data-pal="sage" title="Sage &amp; Sand" aria-pressed="true" aria-label="Sage and Sand palette"></button>
+        <button class="swatch sw-powder" data-pal="powder" title="Powder Blue" aria-pressed="false" aria-label="Powder Blue palette"></button>
+        <button class="swatch sw-seaglass" data-pal="seaglass" title="Sea Glass" aria-pressed="false" aria-label="Sea Glass palette"></button>
+        <button class="swatch sw-lavender" data-pal="lavender" title="Lavender Mist" aria-pressed="false" aria-label="Lavender Mist palette"></button>
+        <button class="swatch sw-rose" data-pal="rose" title="Dusty Rose" aria-pressed="false" aria-label="Dusty Rose palette"></button>
+        <button class="swatch sw-peach" data-pal="peach" title="Peach Blossom" aria-pressed="false" aria-label="Peach Blossom palette"></button>
+      </div>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" aria-selected="true" data-tab="pathways"><span class="tnum">01</span>Explore pathways</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="start"><span class="tnum">02</span>Getting started</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="resources"><span class="tnum">03</span>Resources</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="plan"><span class="tnum">04</span>My action plan</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="howto"><span class="tnum">05</span>How to use</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ TAB 1: PATHWAYS ============ -->
+  <section class="panel active" id="pathways" role="tabpanel">
+    <div class="eyebrow">Where nursing can take you</div>
+    <h1 class="h-hero">Find the path that <em>fits your calling</em>.</h1>
+    <p class="lede">Nursing is not one job, it's a hundred doorways. Start where you are, then grow toward bedside specialties, advanced practice, leadership, teaching, or research. Tap any role to see what it takes, how long it runs, and where to begin.</p>
+
+    <div class="journey">
+      <div class="journey-top">
+        <h3>The shape of a nursing career</h3>
+        <span>Most journeys move left to right, but many people branch, pause, and return.</span>
+      </div>
+      <div class="stages">
+        <div class="stage"><div class="stage-dot">①</div><div><div class="stage-name">Foundations</div><div class="stage-desc">CNA · LPN/LVN — first patient-care roles</div></div></div>
+        <div class="stage"><div class="stage-dot">②</div><div><div class="stage-name">Registered Nurse</div><div class="stage-desc">ADN or BSN + NCLEX-RN</div></div></div>
+        <div class="stage"><div class="stage-dot">③</div><div><div class="stage-name">Specialize</div><div class="stage-desc">Certify in a clinical area you love</div></div></div>
+        <div class="stage"><div class="stage-dot">④</div><div><div class="stage-name">Advance</div><div class="stage-desc">NP · CRNA · CNM · CNS (MSN/DNP)</div></div></div>
+        <div class="stage"><div class="stage-dot">⑤</div><div><div class="stage-name">Lead &amp; shape</div><div class="stage-desc">Management · education · informatics · research</div></div></div>
+      </div>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter pathways by stage">
+      <button class="chip" data-filter="all" aria-pressed="true">All paths</button>
+      <button class="chip" data-filter="Foundations" aria-pressed="false">Foundations</button>
+      <button class="chip" data-filter="Registered Nurse" aria-pressed="false">Registered Nurse</button>
+      <button class="chip" data-filter="Specialize" aria-pressed="false">Specialize</button>
+      <button class="chip" data-filter="Advanced Practice" aria-pressed="false">Advanced practice</button>
+      <button class="chip" data-filter="Lead & Shape" aria-pressed="false">Lead &amp; shape</button>
+    </div>
+
+    <div class="cards" id="cardGrid"><!-- cards injected by JS --></div>
+  </section>
+
+  <!-- ============ TAB 2: GETTING STARTED ============ -->
+  <section class="panel" id="start" role="tabpanel">
+    <div class="eyebrow">For the new nurse</div>
+    <h1 class="h-hero">Your first steps, <em>in order</em>.</h1>
+    <p class="lede">Whether you're still choosing a program or you just passed your boards, these are the moves that build a strong, flexible foundation. You don't have to know your final destination yet, you just have to take the next right step.</p>
+
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">1</div><h3>Choose your entry route</h3><p>Pick an accredited ADN (about 2 years) or BSN (about 4 years) program. A BSN opens more doors and is increasingly preferred by hospitals, but ADN-to-BSN bridges let you start sooner and finish later.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Pass the NCLEX-RN</h3><p>After graduating, apply for licensure through your state board, register with Pearson VUE, and pass the NCLEX-RN. This single exam turns your degree into an active license to practice.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Get your safety certs</h3><p>Earn BLS (Basic Life Support) right away; most employers also want ACLS and sometimes PALS within your first months. These are short courses, easy wins, and often required to apply.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Land your first role</h3><p>Look for a nurse residency or new-grad program. Many nurses start in med-surg or telemetry to build broad assessment skills, a foundation that transfers to almost any specialty later.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h3>Find a mentor</h3><p>Ask a seasoned nurse, charge nurse, or educator to check in with you. A good mentor shortens your learning curve and helps you read the unwritten rules of the unit.</p></div>
+      <div class="step-card"><div class="step-num">6</div><h3>Join a professional body</h3><p>Membership in the ANA or a specialty organization gives you CE discounts, job boards, conferences, and a network long before you need to lean on it.</p></div>
+    </div>
+
+    <div class="timeline">
+      <h3>A realistic first three years</h3>
+      <div class="tl-row"><div class="tl-when">Months 0–6</div><div class="tl-what"><b>Survive and stabilize.</b> Finish orientation, master your unit's routines and charting, and focus on safe, confident fundamentals. This is normal-hard for everyone.</div></div>
+      <div class="tl-row"><div class="tl-when">Months 6–12</div><div class="tl-what"><b>Find your footing.</b> Take a fuller patient load, start noticing which patients and problems energize you. Begin a simple journal of cases that fascinate you.</div></div>
+      <div class="tl-row"><div class="tl-when">Year 1–2</div><div class="tl-what"><b>Choose a direction.</b> With about a year of experience you qualify for many specialty certifications. Pick one area and go deep, or try a transfer to test a specialty.</div></div>
+      <div class="tl-row"><div class="tl-when">Year 2–3</div><div class="tl-what"><b>Build toward the next tier.</b> Earn a specialty certification, finish an RN-to-BSN if needed, and explore whether advanced practice, leadership, or teaching calls to you.</div></div>
+    </div>
+
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16v-4M12 8h.01"/><circle cx="12" cy="12" r="9"/></svg>
+      <div>
+        <h4>You don't need the whole map to take the next step.</h4>
+        <p>Careers in nursing rarely run in a straight line. Use the action plan tab to capture just the next few milestones, then revisit and revise as you learn what you love.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB 3: RESOURCES ============ -->
+  <section class="panel" id="resources" role="tabpanel">
+    <div class="eyebrow">Trusted places to go next</div>
+    <h1 class="h-hero">Resources that <em>actually help</em>.</h1>
+    <p class="lede">The organizations below set the standards, run the exams, and offer the scholarships. Bookmark the ones tied to your path. Always confirm current requirements directly with your state board of nursing, since rules vary by state.</p>
+    <div class="res-grid" id="resGrid"><!-- resources injected by JS --></div>
+  </section>
+
+  <!-- ============ TAB 4: ACTION PLAN ============ -->
+  <section class="panel" id="plan" role="tabpanel">
+    <div class="eyebrow">Make it real</div>
+    <h1 class="h-hero">Build your <em>action plan</em>.</h1>
+    <p class="lede">Fill in what you know today, add milestones with target dates, then save it to this browser or download a polished PDF report to keep, share with a mentor, or tape above your desk. Nothing here leaves your device.</p>
+
+    <div class="plan-wrap">
+      <!-- about you -->
+      <div class="plan-card">
+        <h3><span class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>About you</h3>
+        <p class="pc-hint">A snapshot of where you stand right now.</p>
+        <div class="field-grid">
+          <div class="field"><label for="pName">Name</label><input id="pName" type="text" placeholder="e.g. Maria Santos"></div>
+          <div class="field"><label for="pStatus">Where you are now</label>
+            <select id="pStatus">
+              <option value="">Select…</option>
+              <option>Considering nursing</option>
+              <option>Pre-nursing / prerequisites</option>
+              <option>Nursing student</option>
+              <option>New graduate (pre-NCLEX)</option>
+              <option>New RN (0–1 yr)</option>
+              <option>RN with 1–3 yrs</option>
+              <option>Experienced RN (3+ yrs)</option>
+              <option>Returning to nursing</option>
+            </select>
+          </div>
+          <div class="field full"><label for="pCreds">Credentials you already hold</label><input id="pCreds" type="text" placeholder="e.g. CNA, BLS, ADN in progress"></div>
+        </div>
+      </div>
+
+      <!-- your goal -->
+      <div class="plan-card">
+        <h3><span class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>Your goal</h3>
+        <p class="pc-hint">Where you'd love to be. Pick a target role, or add one from the Explore pathways tab.</p>
+        <div class="field-grid">
+          <div class="field"><label for="pGoal">Target role</label>
+            <select id="pGoal"><option value="">Select a pathway…</option></select>
+          </div>
+          <div class="field"><label for="pBy">Target timeframe</label>
+            <select id="pBy">
+              <option value="">Select…</option>
+              <option>Within 1 year</option>
+              <option>1–2 years</option>
+              <option>2–4 years</option>
+              <option>4–6 years</option>
+              <option>A long-term dream</option>
+            </select>
+          </div>
+          <div class="field full"><label for="pWhy">Why this matters to you</label><textarea id="pWhy" placeholder="The reason you'll come back to on the hard days…"></textarea></div>
+        </div>
+      </div>
+
+      <!-- milestones -->
+      <div class="plan-card">
+        <h3><span class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>Milestones</h3>
+        <p class="pc-hint">Break the path into steps with target dates. Add education, licensure, certifications, experience, and networking goals.</p>
+        <div class="milestones" id="msList"></div>
+        <button class="add-ms" id="addMs" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a milestone</button>
+      </div>
+
+      <!-- next actions -->
+      <div class="plan-card">
+        <h3><span class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>My next three actions</h3>
+        <p class="pc-hint">Small, doable things you can start this week.</p>
+        <div class="quickwins">
+          <div class="qw-row"><span>1</span><div class="field" style="flex:1"><input id="pQw1" type="text" placeholder="e.g. Email two NICU nurses to ask about their day"></div></div>
+          <div class="qw-row"><span>2</span><div class="field" style="flex:1"><input id="pQw2" type="text" placeholder="e.g. Register for the BLS course"></div></div>
+          <div class="qw-row"><span>3</span><div class="field" style="flex:1"><input id="pQw3" type="text" placeholder="e.g. Look up RN-to-BSN program deadlines"></div></div>
+        </div>
+      </div>
+
+      <!-- action bar -->
+      <div class="actionbar">
+        <span class="ab-status" id="abStatus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Not saved yet</span>
+        <button class="btn btn-danger" id="btnClear" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>Clear</button>
+        <button class="btn btn-ghost" id="btnSave" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save plan</button>
+        <button class="btn btn-primary" id="btnPrint" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>Download PDF report</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB 5: HOW TO USE ============ -->
+  <section class="panel" id="howto" role="tabpanel">
+    <div class="eyebrow">A two-minute orientation</div>
+    <h1 class="h-hero">How to use <em>this app</em>.</h1>
+    <p class="lede">Everything here lives in your browser and works offline. There's no account, no sign-up, and nothing you do is sent anywhere. Here's the quickest way to get value from it, then a tour of each tab.</p>
+
+    <div class="section-head"><h2>Quick start</h2><p>Four steps from opening the app to a printed plan.</p></div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">1</div><h3>Set the mood</h3><p>Pick one of the six pastel palettes using the dots labeled <b>Palette</b> in the top bar. Your choice is remembered next time you open the app.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Explore</h3><p>Browse career paths and tap any role to see credentials, timelines, and first steps. Found one that excites you? Use <b>Set as my goal</b>.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Plan</h3><p>Open <b>My action plan</b>, fill in your details, and add milestones with target dates. It auto-fills the goal if you set one while exploring.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Save &amp; print</h3><p>Press <b>Save plan</b> to keep it in this browser, then <b>Download PDF report</b> for a clean copy you can keep, print, or share.</p></div>
+    </div>
+
+    <div class="section-head"><h2>What each tab does</h2><p>The numbers match the tabs along the top.</p></div>
+    <div class="guide">
+      <div class="guide-item">
+        <div class="guide-badge">01</div>
+        <div class="guide-body">
+          <h3>Explore pathways</h3>
+          <p>A visual map of how nursing careers tend to flow, followed by detailed cards for sixteen roles.</p>
+          <ul class="guide-do">
+            <li>Use the <b>filter chips</b> (All paths, Foundations, Registered Nurse, and so on) to narrow the cards by stage.</li>
+            <li>Tap <b>See what it takes</b> on any card to open credentials, typical time, ordered first steps, and resource links.</li>
+            <li>Tap <b>Set as my goal in action plan</b> to send that role straight to your plan and jump to it.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="guide-badge">02</div>
+        <div class="guide-body">
+          <h3>Getting started</h3>
+          <p>For a new or future nurse: the first moves that build a strong, flexible foundation.</p>
+          <ul class="guide-do">
+            <li>Read the <b>six first steps</b> in order, from choosing a program to joining a professional body.</li>
+            <li>Use the <b>first-three-years timeline</b> to set realistic expectations for early practice.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="guide-badge">03</div>
+        <div class="guide-body">
+          <h3>Resources</h3>
+          <p>Trusted organizations grouped by purpose, from licensure to scholarships.</p>
+          <ul class="guide-do">
+            <li>Each link opens in a <b>new tab</b>, so you won't lose your place or your plan.</li>
+            <li>Bookmark the groups tied to your path, and always confirm details with your <b>state board of nursing</b>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-item">
+        <div class="guide-badge">04</div>
+        <div class="guide-body">
+          <h3>My action plan</h3>
+          <p>The interactive part: capture where you are, where you're headed, and the steps between.</p>
+          <ul class="guide-do">
+            <li>Fill in <b>About you</b> and <b>Your goal</b>. The goal menu includes every pathway, or arrives pre-filled from the Explore tab.</li>
+            <li>Under <b>Milestones</b>, press <b>Add a milestone</b> to create a row, then set its category, target month, and status. The <b>×</b> removes a row.</li>
+            <li>List <b>three next actions</b> you can start this week, the small wins that build momentum.</li>
+            <li><b>Save plan</b> stores it in this browser · <b>Clear</b> empties everything (it asks first) · <b>Download PDF report</b> makes the printable copy.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+      <div>
+        <h4>Getting your PDF report</h4>
+        <p>Press <b>Download PDF report</b> to build a polished, designed one-to-two-page report of your plan. It will download directly, or open in a new browser tab where you can read it and use your browser's own <b>Print</b> or <b>Save</b> button. Either way you get a clean copy to keep or share — the rest of the app is never included.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <div>
+        <h4>Where your plan is kept</h4>
+        <p>Saving stores your plan only in <b>this browser on this device</b>, so it's waiting when you return. It won't appear on another computer, and clearing your browser data removes it. For a permanent copy, download the PDF report. If you're using a shared or private-mode browser where saving is blocked, the app will tell you and the PDF is your best way to keep your work.</p>
+      </div>
+    </div>
+  </section>
+
+<footer>
+  <p><strong>A note on accuracy.</strong> Timeframes and credential names are typical for the United States and vary by state, school, and employer. Always verify current requirements with your state board of nursing and your chosen program.</p>
+  <p>Your action plan is stored only in this browser. Clearing your browser data or this app's storage will remove it, so download a PDF copy for safekeeping.</p>
+</footer>
+
+<!-- print-only document (offline fallback) -->
+<div class="print-doc" id="printDoc"></div>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span id="toastMsg">Saved</span></div>
+
+<script>
+/* ============ DATA ============ */
+const PATHWAYS = [
+  {id:'cna', name:'Certified Nursing Assistant (CNA)', tier:'Foundations', tagline:'A fast on-ramp into hands-on patient care.',
+   time:'4–12 weeks', credLabel:'State certificate',
+   summary:'CNAs provide direct daily care — bathing, mobility, vitals, and comfort — under the supervision of nurses. It is the quickest way to learn whether bedside care is for you, and many nurses start here while in school.',
+   credentials:['Complete a state-approved CNA training program (often at a community college or Red Cross)','Pass your state competency exam: a written test plus a hands-on skills demonstration','Get listed on your state nurse aide registry'],
+   steps:['Find a state-approved program near you','Complete required clinical hours','Schedule and pass the competency exam','Apply to long-term care, hospitals, or home health'],
+   resources:[{t:'How to become a CNA (Red Cross guide)',u:'https://www.redcross.org/take-a-class/cna/cna-training/cna-classes'},{t:'Find your state board of nursing',u:'https://www.ncsbn.org/membership/us-members/contact-bon.page'}]},
+
+  {id:'lpn', name:'Licensed Practical / Vocational Nurse (LPN/LVN)', tier:'Foundations', tagline:'Licensed bedside nursing in about a year.',
+   time:'~12 months', credLabel:'NCLEX-PN',
+   summary:'LPNs (called LVNs in California and Texas) give medications, monitor patients, and provide skilled care under RNs and physicians. It is a faster, lower-cost route into licensed practice, and credits often transfer into an LPN-to-RN bridge later.',
+   credentials:['Finish an accredited practical nursing diploma or certificate program','Pass the NCLEX-PN licensing exam','Obtain your state LPN/LVN license'],
+   steps:['Enroll in an accredited PN program','Complete coursework and clinicals','Apply for licensure with your state board','Pass the NCLEX-PN and start applying'],
+   resources:[{t:'NCLEX-PN overview (NCSBN)',u:'https://www.ncsbn.org/exams.page'},{t:'Find accredited programs (ACEN)',u:'https://www.acenursing.org/'}]},
+
+  {id:'adn', name:'Registered Nurse via ADN', tier:'Registered Nurse', tagline:'Become an RN in about two years.',
+   time:'~2–3 years', credLabel:'NCLEX-RN',
+   summary:'An Associate Degree in Nursing is the shorter, more affordable route to RN licensure, usually offered at community colleges. You sit the same NCLEX-RN as BSN grads and can bridge to a BSN later while working.',
+   credentials:['Earn an Associate Degree in Nursing (ADN/ASN) from an accredited program','Pass the NCLEX-RN','Hold an active RN license in your state'],
+   steps:['Complete prerequisites (anatomy, microbiology, etc.)','Apply to an accredited ADN program','Finish coursework and clinical rotations','Apply for licensure and pass the NCLEX-RN'],
+   resources:[{t:'About the NCLEX-RN',u:'https://www.ncsbn.org/exams.page'},{t:'Find your state board of nursing',u:'https://www.ncsbn.org/membership/us-members/contact-bon.page'}]},
+
+  {id:'bsn', name:'Registered Nurse via BSN', tier:'Registered Nurse', tagline:'The four-year degree hospitals increasingly prefer.',
+   time:'~4 years', credLabel:'NCLEX-RN',
+   summary:'A Bachelor of Science in Nursing covers the same clinical core as an ADN plus leadership, research, and community health. It is the standard starting credential for Magnet hospitals and the prerequisite for most graduate study.',
+   credentials:['Earn a BSN from an accredited university','Pass the NCLEX-RN','Hold an active RN license'],
+   steps:['Apply to an accredited BSN program','Complete general education and nursing coursework','Finish clinical rotations across specialties','Apply for licensure and pass the NCLEX-RN'],
+   resources:[{t:'AACN: nursing education',u:'https://www.aacnnursing.org/'},{t:'About the NCLEX-RN',u:'https://www.ncsbn.org/exams.page'}]},
+
+  {id:'absn', name:'Accelerated BSN (second career)', tier:'Registered Nurse', tagline:'For career-changers who already have a degree.',
+   time:'~12–18 months', credLabel:'NCLEX-RN',
+   summary:'If you already hold a bachelor\'s in another field, an accelerated BSN fast-tracks you into nursing. The pace is intense and full-time, but you arrive at the same RN license in a fraction of the usual time.',
+   credentials:['Hold a prior bachelor\'s degree','Complete required science prerequisites','Finish an accredited accelerated BSN','Pass the NCLEX-RN'],
+   steps:['Confirm and complete prerequisite courses','Apply to accelerated programs','Complete the intensive curriculum and clinicals','Pass the NCLEX-RN'],
+   resources:[{t:'Accelerated programs (AACN)',u:'https://www.aacnnursing.org/news-data/fact-sheets/accelerated-baccalaureate-and-masters-degrees-in-nursing'}]},
+
+  {id:'rnbsn', name:'RN-to-BSN completion', tier:'Registered Nurse', tagline:'Finish your bachelor\'s while you work.',
+   time:'~1–2 years', credLabel:'BSN',
+   summary:'Already an RN with an ADN? An RN-to-BSN program, usually online and part-time, completes your bachelor\'s without repeating clinicals. It widens your job options and is the gateway to graduate study.',
+   credentials:['Active RN license','Enroll in an accredited RN-to-BSN program','Complete bridge coursework (often online)'],
+   steps:['Choose an accredited online or hybrid program','Transfer eligible credits','Complete coursework around your work schedule','Graduate with your BSN'],
+   resources:[{t:'CCNE-accredited programs (AACN)',u:'https://www.aacnnursing.org/ccne-accreditation'}]},
+
+  {id:'spec', name:'Specialty Certification', tier:'Specialize', tagline:'Become the expert in the area you love.',
+   time:'+1–2 yrs experience, then exam', credLabel:'e.g. CCRN, CEN, OCN',
+   summary:'After about a year or two in a specialty, you can certify to validate deep expertise — critical care (CCRN), emergency (CEN), oncology (OCN), pediatrics (CPN), medical-surgical (CMSRN), and many more. Certification often brings pay bumps and credibility.',
+   credentials:['Hold an active RN license','Accumulate the required practice hours in the specialty','Pass the specialty certification exam','Renew with continuing education'],
+   steps:['Choose your specialty and confirm hour requirements','Gain focused clinical experience','Study using the certifying body\'s materials','Pass the exam and add the credential to your title'],
+   resources:[{t:'AACN critical-care certs (CCRN)',u:'https://www.aacn.org/certification'},{t:'ANCC certifications',u:'https://www.nursingworld.org/ancc/'},{t:'Oncology Nursing (ONCC)',u:'https://www.oncc.org/'}]},
+
+  {id:'np', name:'Nurse Practitioner (NP)', tier:'Advanced Practice', tagline:'Diagnose, treat, and often prescribe.',
+   time:'~2–4 years grad school', credLabel:'MSN/DNP + national cert',
+   summary:'NPs are advanced practice nurses who assess, diagnose, order tests, and (in most states) prescribe. You choose a population focus — family (FNP), psychiatric-mental health (PMHNP), pediatrics, adult-gerontology, and more.',
+   credentials:['BSN and active RN license','Earn an MSN or DNP in your NP specialty','Pass a national certification exam (AANP or ANCC)','Obtain APRN licensure in your state'],
+   steps:['Gain RN experience in a relevant area','Choose a population focus and accredited NP program','Complete graduate coursework and clinical hours','Pass national certification and apply for APRN licensure'],
+   resources:[{t:'American Association of Nurse Practitioners',u:'https://www.aanp.org/'},{t:'ANCC certification',u:'https://www.nursingworld.org/ancc/'}]},
+
+  {id:'crna', name:'Certified Registered Nurse Anesthetist (CRNA)', tier:'Advanced Practice', tagline:'One of nursing\'s most advanced — and best-paid — roles.',
+   time:'~3 yr doctorate after ICU experience', credLabel:'DNP/DNAP + NBCRNA',
+   summary:'CRNAs deliver anesthesia and monitor patients through surgery and procedures. The path is demanding: it requires critical-care experience and, for new students, a doctoral program. It is highly competitive and highly rewarded.',
+   credentials:['BSN and active RN license','At least ~1 year of critical-care (ICU) experience','Complete a doctoral nurse anesthesia program (DNP/DNAP)','Pass the National Certification Exam (NBCRNA)'],
+   steps:['Build ICU experience and strong references','Strengthen your application (GPA, CCRN, shadowing)','Complete the doctoral anesthesia program','Pass the NBCRNA national certification exam'],
+   resources:[{t:'American Association of Nurse Anesthesiology',u:'https://www.aana.com/'},{t:'NBCRNA certification',u:'https://www.nbcrna.com/'}]},
+
+  {id:'cnm', name:'Certified Nurse-Midwife (CNM)', tier:'Advanced Practice', tagline:'Care across pregnancy, birth, and women\'s health.',
+   time:'~2–4 years grad school', credLabel:'MSN/DNP + AMCB',
+   summary:'CNMs provide prenatal care, attend births, and offer gynecologic and primary care for women across the lifespan. It blends advanced clinical practice with a deeply relational model of care.',
+   credentials:['BSN and active RN license','Complete an accredited nurse-midwifery graduate program','Pass the AMCB national certification exam','Obtain APRN/CNM licensure in your state'],
+   steps:['Gain relevant RN experience (often labor & delivery)','Enroll in an ACME-accredited midwifery program','Complete clinical births and coursework','Pass the AMCB exam and get licensed'],
+   resources:[{t:'American College of Nurse-Midwives',u:'https://www.midwife.org/'},{t:'AMCB certification',u:'https://www.amcbmidwife.org/'}]},
+
+  {id:'cns', name:'Clinical Nurse Specialist (CNS)', tier:'Advanced Practice', tagline:'Expert practice that lifts whole units.',
+   time:'~2–3 years grad school', credLabel:'MSN/DNP + cert',
+   summary:'A CNS is an advanced practice expert in a specialty who improves outcomes at three levels: the patient, the nursing staff, and the system. They lead evidence-based practice changes and mentor bedside teams.',
+   credentials:['BSN and active RN license','Earn an MSN or DNP with a CNS focus','Pass the relevant CNS certification','Meet your state\'s APRN requirements'],
+   steps:['Develop deep expertise in a specialty','Enter an accredited CNS graduate program','Complete coursework and a practice project','Certify and apply your skills to system change'],
+   resources:[{t:'National Association of CNS',u:'https://nacns.org/'},{t:'ANCC certification',u:'https://www.nursingworld.org/ancc/'}]},
+
+  {id:'leader', name:'Nurse Manager / Executive', tier:'Lead & Shape', tagline:'Lead teams, units, and whole organizations.',
+   time:'varies; often +MSN/MBA', credLabel:'NE-BC / NEA-BC',
+   summary:'Leadership runs from charge nurse to manager to chief nursing officer. It blends clinical credibility with budgeting, staffing, and strategy. Many leaders add an MSN in administration or an MBA along the way.',
+   credentials:['Active RN license and solid clinical experience','Take on charge/lead roles to build leadership skills','Consider an MSN in leadership/administration or an MBA','Certify as NE-BC or NEA-BC (executive)'],
+   steps:['Volunteer for committees and charge shifts','Find a leadership mentor','Pursue a leadership degree if aiming for senior roles','Earn a nursing leadership certification'],
+   resources:[{t:'American Organization for Nursing Leadership',u:'https://www.aonl.org/'},{t:'ANCC leadership certs',u:'https://www.nursingworld.org/ancc/'}]},
+
+  {id:'educator', name:'Nurse Educator', tier:'Lead & Shape', tagline:'Teach the next generation of nurses.',
+   time:'~2–3 yrs grad school', credLabel:'MSN (Education) + CNE',
+   summary:'Nurse educators teach in hospitals (staff development) or academia (schools of nursing). It is a path for nurses who love mentoring. Academic faculty roles often expect a doctorate over time.',
+   credentials:['Active RN license with clinical experience','Earn an MSN in nursing education (academic roles may need a PhD/DNP)','Consider the Certified Nurse Educator (CNE) credential'],
+   steps:['Build strong clinical and teaching experience','Complete a graduate education-focused program','Gain teaching practicum hours','Certify as a CNE and pursue faculty or staff-development roles'],
+   resources:[{t:'National League for Nursing',u:'https://www.nln.org/'},{t:'CNE certification (NLN)',u:'https://www.nln.org/certification/Certification-for-Nurse-Educators/cne'}]},
+
+  {id:'informatics', name:'Nursing Informatics', tier:'Lead & Shape', tagline:'Where clinical care meets technology and data.',
+   time:'~2 yrs grad study (typical)', credLabel:'RN-BC Informatics',
+   summary:'Informatics nurses optimize electronic health records, build clinical workflows, and turn data into safer care. It is a strong fit for analytical nurses who want impact beyond a single bedside.',
+   credentials:['Active RN license','Build experience with clinical systems and EHRs','Consider an MSN in nursing informatics','Certify in informatics nursing (ANCC)'],
+   steps:['Get involved in EHR or quality projects on your unit','Learn data and workflow fundamentals','Pursue an informatics certificate or MSN','Earn the informatics nursing certification'],
+   resources:[{t:'ANCC informatics certification',u:'https://www.nursingworld.org/ancc/'},{t:'HIMSS nursing informatics',u:'https://www.himss.org/'}]},
+
+  {id:'phd', name:'Nurse Scientist (PhD)', tier:'Lead & Shape', tagline:'Generate the evidence the profession runs on.',
+   time:'~3–5 years', credLabel:'PhD in Nursing',
+   summary:'A PhD prepares nurses to lead research and shape policy and academia. It differs from the practice-focused DNP: the PhD answers new questions, while the DNP applies evidence to practice. Both are doctorates; they serve different callings.',
+   credentials:['BSN or MSN and active RN license','Gain into a PhD in Nursing program','Complete coursework, a dissertation, and original research'],
+   steps:['Identify research questions that move you','Connect with faculty mentors in your area','Apply to PhD programs (often funded)','Conduct and defend original research'],
+   resources:[{t:'AACN doctoral education',u:'https://www.aacnnursing.org/'},{t:'PhD vs DNP (AACN)',u:'https://www.aacnnursing.org/news-data/fact-sheets/dnp-fact-sheet'}]}
+];
+
+const RESOURCES = [
+  {cat:'Licensure & exams', title:'Start here for every path', items:[
+    {t:'NCSBN — boards of nursing & NCLEX',u:'https://www.ncsbn.org/',note:'Runs the NCLEX and links to every state board.'},
+    {t:'Find your state board of nursing',u:'https://www.ncsbn.org/membership/us-members/contact-bon.page',note:'The final word on requirements where you practice.'},
+    {t:'Pearson VUE — NCLEX registration',u:'https://www.pearsonvue.com/nclex',note:'Where you register and schedule the exam.'}
+  ]},
+  {cat:'Professional bodies', title:'Networks, CE & advocacy', items:[
+    {t:'American Nurses Association (ANA)',u:'https://www.nursingworld.org/',note:'The broad professional home for U.S. nurses.'},
+    {t:'ANCC — credentialing center',u:'https://www.nursingworld.org/ancc/',note:'Certifications for specialties, leadership, informatics.'},
+    {t:'National League for Nursing',u:'https://www.nln.org/',note:'Education-focused; home of the CNE credential.'}
+  ]},
+  {cat:'Education & accreditation', title:'Choosing a program', items:[
+    {t:'AACN — colleges of nursing',u:'https://www.aacnnursing.org/',note:'Baccalaureate and graduate education resources.'},
+    {t:'CCNE accreditation search',u:'https://www.aacnnursing.org/ccne-accreditation',note:'Confirm a program is accredited before enrolling.'},
+    {t:'ACEN accreditation',u:'https://www.acenursing.org/',note:'Accredits practical, ADN, and higher programs.'}
+  ]},
+  {cat:'Advanced practice', title:'NP, CRNA, CNM, CNS', items:[
+    {t:'American Association of Nurse Practitioners',u:'https://www.aanp.org/',note:'NP education, certification, and practice news.'},
+    {t:'AANA — nurse anesthesiology',u:'https://www.aana.com/',note:'For the CRNA pathway.'},
+    {t:'American College of Nurse-Midwives',u:'https://www.midwife.org/',note:'For the CNM pathway.'}
+  ]},
+  {cat:'Specialty certification', title:'Validate your expertise', items:[
+    {t:'AACN — critical-care (CCRN)',u:'https://www.aacn.org/certification',note:'Critical care and progressive care certs.'},
+    {t:'Oncology Nursing Certification (ONCC)',u:'https://www.oncc.org/',note:'OCN and related oncology credentials.'},
+    {t:'Emergency Nurses Association (CEN)',u:'https://www.ena.org/',note:'For emergency nursing certification.'}
+  ]},
+  {cat:'Planning & outlook', title:'Money, scholarships & data', items:[
+    {t:'HRSA Nurse Corps scholarships',u:'https://bhw.hrsa.gov/programs/nurse-corps/scholarship',note:'Funding in exchange for service commitments.'},
+    {t:'BLS — RN occupational outlook',u:'https://www.bls.gov/ooh/healthcare/registered-nurses.htm',note:'Pay ranges and job-growth projections.'},
+    {t:'Discover Nursing (J&J)',u:'https://nursing.jnj.com/',note:'Specialty explorer and scholarship finder.'}
+  ]}
+];
+
+const ICONS = {
+  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  cred:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h4M7 13h7"/></svg>',
+  chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
+  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>'
+};
+
+const TIER_FILTER = {'Foundations':'Foundations','Registered Nurse':'Registered Nurse','Specialize':'Specialize','Advanced Practice':'Advanced Practice','Lead & Shape':'Lead & Shape'};
+
+/* ============ RENDER PATHWAY CARDS ============ */
+const cardGrid = document.getElementById('cardGrid');
+function renderCards(filter='all'){
+  cardGrid.innerHTML = '';
+  PATHWAYS.filter(p => filter==='all' || p.tier===filter).forEach(p => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.dataset.id = p.id;
+    card.innerHTML = `
+      <div class="card-head">
+        <span class="card-tier">${p.tier}</span>
+        <h3>${p.name}</h3>
+        <div class="card-tagline">${p.tagline}</div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-item"><span>Typical time</span><b>${p.time}</b></div>
+        <div class="meta-item"><span>Key credential</span><b>${p.credLabel}</b></div>
+      </div>
+      <button class="card-toggle" type="button" aria-expanded="false">See what it takes ${ICONS.chev}</button>
+      <div class="card-detail">
+        <div class="detail-inner">
+          <div class="detail-block"><h4>What it is</h4><p>${p.summary}</p></div>
+          <div class="detail-block"><h4>Credentials you'll need</h4><ul class="detail-list">${p.credentials.map(c=>`<li>${c}</li>`).join('')}</ul></div>
+          <div class="detail-block"><h4>How to start</h4><ol class="detail-list steps">${p.steps.map(s=>`<li>${s}</li>`).join('')}</ol></div>
+          <div class="detail-block"><h4>Resources</h4><div class="res-links">${p.resources.map(r=>`<a href="${r.u}" target="_blank" rel="noopener">${r.t} ↗</a>`).join('')}</div></div>
+          <button class="add-plan" type="button" data-add="${p.id}">${ICONS.plus} Set as my goal in action plan</button>
+        </div>
+      </div>`;
+    cardGrid.appendChild(card);
+  });
+}
+renderCards();
+
+/* card expand + add-to-plan (event delegation) */
+cardGrid.addEventListener('click', e => {
+  const toggle = e.target.closest('.card-toggle');
+  if(toggle){
+    const card = toggle.closest('.card');
+    const open = card.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    return;
+  }
+  const add = e.target.closest('[data-add]');
+  if(add){
+    const sel = document.getElementById('pGoal');
+    sel.value = PATHWAYS.find(p=>p.id===add.dataset.add).name;
+    switchTab('plan');
+    document.getElementById('pGoal').focus();
+    showToast('Added to your action plan');
+  }
+});
+
+/* ============ FILTERS ============ */
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed','false'));
+    chip.setAttribute('aria-pressed','true');
+    renderCards(chip.dataset.filter);
+  });
+});
+
+/* ============ RESOURCES ============ */
+const resGrid = document.getElementById('resGrid');
+RESOURCES.forEach(group => {
+  const c = document.createElement('div');
+  c.className = 'res-card';
+  c.innerHTML = `<div class="res-cat">${group.cat}</div><h3>${group.title}</h3>
+    <ul>${group.items.map(i=>`<li><a href="${i.u}" target="_blank" rel="noopener">${i.t} ↗</a><span class="res-note">${i.note}</span></li>`).join('')}</ul>`;
+  resGrid.appendChild(c);
+});
+
+/* populate goal dropdown */
+const goalSel = document.getElementById('pGoal');
+PATHWAYS.forEach(p => {
+  const o = document.createElement('option');
+  o.value = p.name; o.textContent = p.name;
+  goalSel.appendChild(o);
+});
+
+/* ============ TABS ============ */
+function switchTab(id){
+  document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.tab===id));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id===id));
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => switchTab(t.dataset.tab)));
+
+/* ============ MILESTONES ============ */
+const msList = document.getElementById('msList');
+const CATS = ['Education','Licensure','Certification','Experience','Networking','Other'];
+const STATUSES = ['Not started','In progress','Done'];
+function milestoneRow(data={}){
+  const row = document.createElement('div');
+  row.className = 'milestone';
+  row.innerHTML = `
+    <div class="field"><label>Milestone</label><input class="ms-title" type="text" placeholder="e.g. Earn CCRN" value="${esc(data.title)}"></div>
+    <div class="field"><label>Category</label><select class="ms-cat">${CATS.map(c=>`<option ${data.cat===c?'selected':''}>${c}</option>`).join('')}</select></div>
+    <div class="field"><label>Target date</label><input class="ms-date" type="month" value="${esc(data.date)}"></div>
+    <button class="ms-remove" type="button" title="Remove milestone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="field ms-note"><label>Notes (optional)</label><input class="ms-notes" type="text" placeholder="What this involves, programs to look at…" value="${esc(data.notes)}"></div>
+    <div class="field" style="grid-column:1/-1"><label>Status</label><select class="ms-status">${STATUSES.map(s=>`<option ${data.status===s?'selected':''}>${s}</option>`).join('')}</select></div>`;
+  row.querySelector('.ms-remove').addEventListener('click', () => row.remove());
+  msList.appendChild(row);
+}
+function esc(v){return (v||'').replace(/"/g,'&quot;');}
+document.getElementById('addMs').addEventListener('click', () => milestoneRow());
+
+/* ============ STATE: SAVE / LOAD / CLEAR ============ */
+const KEY = 'nursing_action_plan_v1';
+const fields = ['pName','pStatus','pCreds','pGoal','pBy','pWhy','pQw1','pQw2','pQw3'];
+const status = document.getElementById('abStatus');
+
+function collect(){
+  const data = {};
+  fields.forEach(f => data[f] = document.getElementById(f).value);
+  data.milestones = [...msList.querySelectorAll('.milestone')].map(m => ({
+    title:m.querySelector('.ms-title').value,
+    cat:m.querySelector('.ms-cat').value,
+    date:m.querySelector('.ms-date').value,
+    status:m.querySelector('.ms-status').value,
+    notes:m.querySelector('.ms-notes').value
+  }));
+  return data;
+}
+function apply(data){
+  fields.forEach(f => { if(data[f]!==undefined) document.getElementById(f).value = data[f]; });
+  msList.innerHTML='';
+  (data.milestones||[]).forEach(m => milestoneRow(m));
+}
+function setStatus(text, saved){
+  status.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${saved?'<path d="M20 6L9 17l-5-5"/>':'<path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/>'}</svg>${text}`;
+}
+
+document.getElementById('btnSave').addEventListener('click', () => {
+  try{
+    localStorage.setItem(KEY, JSON.stringify(collect()));
+    setStatus('Saved to this browser', true);
+    showToast('Plan saved to this browser');
+  }catch(err){
+    setStatus('Could not save here — download a PDF copy', false);
+    showToast('Saving is blocked here. Use Download PDF report instead.');
+  }
+});
+
+document.getElementById('btnClear').addEventListener('click', () => {
+  if(!confirm('Clear the whole plan? This erases every field and your saved copy in this browser.')) return;
+  fields.forEach(f => document.getElementById(f).value = '');
+  msList.innerHTML='';
+  milestoneRow();
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  setStatus('Cleared — not saved yet', false);
+  showToast('Plan cleared');
+});
+
+/* load on start */
+(function init(){
+  let loaded = false;
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(raw){ apply(JSON.parse(raw)); loaded = true; setStatus('Loaded your saved plan', true); }
+  }catch(e){}
+  if(!loaded) milestoneRow();
+})();
+
+/* ============ TOAST ============ */
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 3200);
+}
+
+/* ============ PRINT / PDF (offline fallback document) ============ */
+const STATUS_CLASS = {'Done':'st-done','In progress':'st-prog','Not started':'st-todo'};
+function fmtMonth(v){
+  if(!v) return '—';
+  const [y,m] = v.split('-');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return (months[parseInt(m,10)-1]||'') + ' ' + y;
+}
+function escHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function buildPrintDoc(){
+ try{
+  const d = collect();
+  const today = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  const titleName = d.pName.trim() ? `${escHtml(d.pName.trim())}'s` : 'My';
+
+  const milestoneRows = (d.milestones||[]).filter(m=>m.title||m.notes).map(m => `
+    <tr>
+      <td><strong>${escHtml(m.title)||'—'}</strong>${m.notes?`<br><span style="font-size:9pt;color:#5f6a59">${escHtml(m.notes)}</span>`:''}</td>
+      <td><span class="ms-cat">${escHtml(m.cat||'')}</span></td>
+      <td>${fmtMonth(m.date)}</td>
+      <td><span class="pd-status ${STATUS_CLASS[m.status]||'st-todo'}">${escHtml(m.status||'Not started')}</span></td>
+    </tr>`).join('');
+
+  const quickwins = [d.pQw1,d.pQw2,d.pQw3].filter(q=>q&&q.trim());
+
+  document.getElementById('printDoc').innerHTML = `
+    <div class="pd-header">
+      <div>
+        <div class="pd-kicker">Nursing career action plan</div>
+        <h1 class="pd-title">${titleName} pathway plan</h1>
+      </div>
+      <div class="pd-for">
+        ${d.pName.trim()?`<b>${escHtml(d.pName.trim())}</b>`:''}
+        ${d.pStatus?`${escHtml(d.pStatus)}<br>`:''}
+        Prepared ${today}
+      </div>
+    </div>
+
+    ${(d.pGoal||d.pWhy||d.pBy)?`<div class="pd-goal">
+      <div class="lbl">Goal${d.pBy?` · ${escHtml(d.pBy)}`:''}</div>
+      <div class="big">${escHtml(d.pGoal)||'To be decided'}</div>
+      ${d.pWhy?`<div class="why">“${escHtml(d.pWhy)}”</div>`:''}
+    </div>`:''}
+
+    <div class="pd-section">
+      <div class="pd-cols">
+        <div><div class="lbl">Starting point</div><p>${escHtml(d.pStatus)||'—'}</p></div>
+        <div><div class="lbl">Credentials held</div><p>${escHtml(d.pCreds)||'—'}</p></div>
+      </div>
+    </div>
+
+    ${milestoneRows?`<div class="pd-section">
+      <h3>Milestones</h3>
+      <table class="pd-table">
+        <thead><tr><th style="width:46%">Milestone</th><th>Category</th><th>Target</th><th>Status</th></tr></thead>
+        <tbody>${milestoneRows}</tbody>
+      </table>
+    </div>`:''}
+
+    ${quickwins.length?`<div class="pd-section">
+      <h3>My next three actions</h3>
+      <ol class="pd-list">${quickwins.map(q=>`<li>${escHtml(q)}</li>`).join('')}</ol>
+    </div>`:''}
+
+    <div class="pd-foot">
+      <span>Nursing Pathways · Career Compass &amp; Action Plan</span>
+      <span>Verify all requirements with your state board of nursing.</span>
+    </div>`;
+ }catch(err){
+  document.getElementById('printDoc').innerHTML='<div class="pd-header"><div><div class="pd-kicker">Nursing career action plan</div><h1 class="pd-title">My pathway plan</h1></div></div><p style="font-family:\'Nunito Sans\',sans-serif;color:#33392f;font-size:11pt">Your plan could not be formatted for printing. Please check your entries and try again.</p>';
+ }
+}
+
+/* ============ REAL PDF REPORT (jsPDF) ============ */
+function hexToRgb(h){ h=(h||'').replace('#','').trim(); if(h.length===3) h=h.split('').map(c=>c+c).join(''); const n=parseInt(h||'000000',16); if(isNaN(n)) return [51,57,47]; return [(n>>16)&255,(n>>8)&255,n&255]; }
+function themeColors(){
+  const cs = getComputedStyle(document.body); const g = n => hexToRgb(cs.getPropertyValue(n));
+  return { accentDeep:g('--accent-deep'), accent:g('--accent'), wash:g('--accent-wash'),
+    ink:g('--ink'), inkSoft:g('--ink-soft'), border:g('--border'), pill:g('--pill'), surface2:g('--surface-2') };
+}
+
+function buildPDF(doc, d, T){
+  const W = doc.internal.pageSize.getWidth();
+  const H = doc.internal.pageSize.getHeight();
+  const M = 50, CW = W - 2*M;
+  const today = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  const name = (d.pName||'').trim();
+  const titleName = name ? name + "\u2019s" : 'My';
+  const footerH = 46;
+  const footerRoom = () => H - footerH - 8;
+
+  function headerBand(){
+    doc.setFillColor(...T.wash); doc.setDrawColor(...T.border); doc.setLineWidth(1);
+    doc.roundedRect(M, M, CW, 82, 10, 10, 'FD');
+    const cx = M+40, cy = M+41;
+    doc.setFillColor(255,255,255); doc.setDrawColor(...T.border); doc.circle(cx, cy, 20, 'FD');
+    doc.setFillColor(...T.accentDeep);
+    doc.roundedRect(cx-3, cy-11, 6, 22, 2, 2, 'F');
+    doc.roundedRect(cx-11, cy-3, 22, 6, 2, 2, 'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(8.5); doc.setTextColor(...T.accentDeep);
+    doc.text('NURSING CAREER ACTION PLAN', M+74, M+33);
+    doc.setFont('times','bold'); doc.setFontSize(21); doc.setTextColor(...T.ink);
+    doc.text(titleName + ' pathway plan', M+74, M+58);
+    doc.setFontSize(9); const rx = W - M - 16; let ry = M+30;
+    if(name){ doc.setFont('helvetica','bold'); doc.setTextColor(...T.ink); doc.text(name, rx, ry, {align:'right'}); ry+=14; }
+    if(d.pStatus){ doc.setFont('helvetica','normal'); doc.setTextColor(...T.inkSoft); doc.text(d.pStatus, rx, ry, {align:'right'}); ry+=14; }
+    doc.setFont('helvetica','normal'); doc.setTextColor(...T.inkSoft); doc.text('Prepared ' + today, rx, ry, {align:'right'});
+    return M + 82 + 26;
+  }
+  let y = headerBand();
+
+  if(d.pGoal || d.pWhy || d.pBy){
+    const pad = 18, innerW = CW - pad*2;
+    doc.setFont('times','bold'); doc.setFontSize(15);
+    const goalLines = doc.splitTextToSize(d.pGoal || 'To be decided', innerW);
+    let whyLines = [];
+    if(d.pWhy){ doc.setFont('helvetica','italic'); doc.setFontSize(10.5); whyLines = doc.splitTextToSize('\u201C'+d.pWhy+'\u201D', innerW); }
+    let contentH = 12 + 10 + goalLines.length*18;
+    if(whyLines.length) contentH += 8 + whyLines.length*14;
+    const rectH = contentH + pad*2 - 6;
+    doc.setFillColor(...T.surface2); doc.setDrawColor(...T.border); doc.setLineWidth(1);
+    doc.roundedRect(M, y, CW, rectH, 9, 9, 'FD');
+    let ty = y + pad + 4;
+    doc.setFont('helvetica','bold'); doc.setFontSize(8.5); doc.setTextColor(...T.accentDeep);
+    doc.text('GOAL' + (d.pBy? '   \u00B7   ' + d.pBy.toUpperCase() : ''), M+pad, ty);
+    ty += 24;
+    doc.setFont('times','bold'); doc.setFontSize(15); doc.setTextColor(...T.ink);
+    doc.text(goalLines, M+pad, ty); ty += goalLines.length*18;
+    if(whyLines.length){ ty += 6; doc.setFont('helvetica','italic'); doc.setFontSize(10.5); doc.setTextColor(...T.inkSoft); doc.text(whyLines, M+pad, ty); }
+    y += rectH + 24;
+  }
+
+  function labelValue(label, value, x, colW){
+    doc.setFont('helvetica','bold'); doc.setFontSize(8); doc.setTextColor(...T.accentDeep);
+    doc.text(label.toUpperCase(), x, y);
+    doc.setFont('helvetica','normal'); doc.setFontSize(10.5); doc.setTextColor(...T.ink);
+    const lines = doc.splitTextToSize(value || '\u2014', colW);
+    doc.text(lines, x, y+15); return lines.length;
+  }
+  const half = CW/2;
+  const l1 = labelValue('Starting point', d.pStatus, M, half-14);
+  const l2 = labelValue('Credentials held', d.pCreds, M+half+2, half-14);
+  y += 15 + Math.max(l1,l2)*13 + 22;
+
+  function sectionHeading(txt){
+    doc.setFont('times','bold'); doc.setFontSize(13); doc.setTextColor(...T.ink); doc.text(txt, M, y);
+    doc.setDrawColor(...T.border); doc.setLineWidth(1); doc.line(M, y+7, W-M, y+7); y += 22;
+  }
+
+  const milestones = (d.milestones||[]).filter(m=>m.title||m.notes);
+  const cols = [ {w:246}, {w:96}, {w:78}, {w:CW-246-96-78} ];
+  const cx0 = M, cx1 = M+cols[0].w, cx2 = cx1+cols[1].w, cx3 = cx2+cols[2].w;
+  const statusMap = { 'Done':[[224,236,219],[79,122,71]], 'In progress':[[244,236,216],[154,122,53]], 'Not started':[[236,234,230],[118,112,106]] };
+  const fmtM = v => { if(!v) return '\u2014'; const [yy,mm]=v.split('-'); const A=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return (A[parseInt(mm,10)-1]||'')+' '+yy; };
+  function tableHeader(){
+    doc.setFillColor(...T.pill); doc.roundedRect(M, y, CW, 24, 4, 4, 'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(8); doc.setTextColor(...T.accentDeep);
+    doc.text('MILESTONE', cx0+8, y+15.5); doc.text('CATEGORY', cx1+8, y+15.5);
+    doc.text('TARGET', cx2+8, y+15.5); doc.text('STATUS', cx3+8, y+15.5); y += 24;
+  }
+  if(milestones.length){
+    sectionHeading('Milestones'); tableHeader();
+    milestones.forEach((m, i) => {
+      doc.setFont('helvetica','bold'); doc.setFontSize(9.5);
+      const titleLines = doc.splitTextToSize(m.title||'\u2014', cols[0].w-16);
+      let noteLines = [];
+      if(m.notes){ doc.setFont('helvetica','normal'); doc.setFontSize(8); noteLines = doc.splitTextToSize(m.notes, cols[0].w-16); }
+      const rowH = Math.max(30, 12 + titleLines.length*12 + (noteLines.length?noteLines.length*9.5+3:0) + 8);
+      if(y + rowH > footerRoom()){ doc.addPage(); y = M; tableHeader(); }
+      if(i%2===1){ doc.setFillColor(...T.surface2); doc.rect(M, y, CW, rowH, 'F'); }
+      let ty = y + 16;
+      doc.setFont('helvetica','bold'); doc.setFontSize(9.5); doc.setTextColor(...T.ink); doc.text(titleLines, cx0+8, ty);
+      if(noteLines.length){ doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(...T.inkSoft); doc.text(noteLines, cx0+8, ty + titleLines.length*12 + 1); }
+      doc.setFont('helvetica','bold'); doc.setFontSize(7.5); doc.setTextColor(...T.accentDeep);
+      doc.text(doc.splitTextToSize((m.cat||'').toUpperCase(), cols[1].w-14), cx1+8, y+15);
+      doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(...T.ink); doc.text(fmtM(m.date), cx2+8, y+15);
+      const st = m.status || 'Not started'; const [bg,fg] = statusMap[st] || statusMap['Not started'];
+      doc.setFont('helvetica','bold'); doc.setFontSize(7.5);
+      const tw = doc.getTextWidth(st) + 14;
+      doc.setFillColor(...bg); doc.roundedRect(cx3+8, y+7, tw, 15, 7.5, 7.5, 'F');
+      doc.setTextColor(...fg); doc.text(st, cx3+8+7, y+17);
+      doc.setDrawColor(...T.border); doc.setLineWidth(0.7); doc.line(M, y+rowH, W-M, y+rowH);
+      y += rowH;
+    });
+    y += 22;
+  }
+
+  const qw = [d.pQw1,d.pQw2,d.pQw3].filter(q=>q&&q.trim());
+  if(qw.length){
+    if(y + 40 + qw.length*22 > footerRoom()){ doc.addPage(); y = M; }
+    sectionHeading('My next three actions');
+    qw.forEach((q,i)=>{
+      doc.setFillColor(...T.wash); doc.circle(M+9, y-3, 9, 'F');
+      doc.setFont('times','bold'); doc.setFontSize(10); doc.setTextColor(...T.accentDeep); doc.text(String(i+1), M+9, y+0.5, {align:'center'});
+      doc.setFont('helvetica','normal'); doc.setFontSize(10.5); doc.setTextColor(...T.ink);
+      const lines = doc.splitTextToSize(q, CW-30); doc.text(lines, M+26, y);
+      y += Math.max(20, lines.length*13 + 8);
+    });
+  }
+
+  const pages = doc.getNumberOfPages();
+  for(let p=1; p<=pages; p++){
+    doc.setPage(p);
+    doc.setDrawColor(...T.border); doc.setLineWidth(0.7); doc.line(M, H-footerH, W-M, H-footerH);
+    doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor(...T.inkSoft);
+    doc.text('Nursing Pathways  \u00B7  Career Compass & Action Plan', M, H-footerH+16);
+    doc.text('Verify all requirements with your state board of nursing.', M, H-footerH+27);
+    doc.text('Page ' + p + ' of ' + pages, W-M, H-footerH+16, {align:'right'});
+  }
+  return doc;
+}
+
+/* ---- Robust delivery: some environments (sandboxed previews, embedded
+   webviews) silently block the hidden-anchor download that jsPDF's save()
+   relies on, and that failure is not throwable, so we can't catch it. The
+   most reliable, print-friendly path is to open the finished PDF in a new
+   browser tab, where the built-in PDF viewer lets the consumer read, print,
+   and save it. We try that first, then a forced download, then window.print. ---- */
+function deliverPDF(doc, filename){
+  let blob = null, url = null;
+  try{ blob = doc.output('blob'); url = URL.createObjectURL(blob); }catch(e){ url = null; }
+
+  if(url){
+    // 1) Open in a new tab (works inside sandboxes; needs the user gesture we already have).
+    let win = null;
+    try{ win = window.open(url, '_blank'); }catch(e){ win = null; }
+    if(win){
+      setTimeout(()=>{ try{ URL.revokeObjectURL(url); }catch(e){} }, 60000);
+      showToast('PDF opened in a new tab — print or save it from there');
+      return true;
+    }
+    // 2) Fall back to a forced download via a real anchor click.
+    try{
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; a.rel = 'noopener'; a.style.display = 'none';
+      document.body.appendChild(a); a.click();
+      setTimeout(()=>{ try{ a.remove(); URL.revokeObjectURL(url); }catch(e){} }, 1500);
+      showToast('PDF downloaded');
+      return true;
+    }catch(e){}
+  }
+
+  // 3) Last resort: jsPDF's own save (native download), then print.
+  try{ doc.save(filename); showToast('PDF downloaded'); return true; }catch(e){}
+  return false;
+}
+
+function downloadPDF(){
+  // If jsPDF didn't load, use the styled print document as an offline fallback.
+  if(!(window.jspdf && window.jspdf.jsPDF)){
+    buildPrintDoc();
+    setTimeout(()=>{ try{ window.print(); }catch(e){ showToast('Printing is blocked here.'); } }, 60);
+    return;
+  }
+  try{
+    const d = collect();
+    const doc = new window.jspdf.jsPDF({unit:'pt', format:'letter', compress:true});
+    buildPDF(doc, d, themeColors());
+    const base = (d.pName||'').trim().replace(/[^a-z0-9]+/gi,'-').replace(/^-+|-+$/g,'').toLowerCase();
+    const filename = (base? base+'-' : '') + 'nursing-action-plan.pdf';
+    if(!deliverPDF(doc, filename)){
+      showToast('Could not open the PDF — opening print instead');
+      buildPrintDoc();
+      setTimeout(()=>{ try{ window.print(); }catch(e){} }, 60);
+    }
+  }catch(err){
+    showToast('Could not build the PDF — opening print instead');
+    buildPrintDoc();
+    setTimeout(()=>{ try{ window.print(); }catch(e){} }, 60);
+  }
+}
+
+// Primary button builds and delivers the designed PDF report.
+document.getElementById('btnPrint').addEventListener('click', downloadPDF);
+// Keep the styled print document ready for any manual Ctrl/Cmd+P too.
+window.addEventListener('beforeprint', buildPrintDoc);
+
+/* ============ PALETTE SWITCHER ============ */
+const PAL_KEY = 'nursing_palette';
+document.querySelectorAll('.swatch').forEach(sw => {
+  sw.addEventListener('click', () => {
+    const pal = sw.dataset.pal;
+    document.body.setAttribute('data-theme', pal);
+    document.querySelectorAll('.swatch').forEach(s => s.setAttribute('aria-pressed', s===sw));
+    try{ localStorage.setItem(PAL_KEY, pal); }catch(e){}
+  });
+});
+(function loadPal(){
+  try{
+    const p = localStorage.getItem(PAL_KEY);
+    if(p){
+      document.body.setAttribute('data-theme', p);
+      document.querySelectorAll('.swatch').forEach(s => s.setAttribute('aria-pressed', s.dataset.pal===p));
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
