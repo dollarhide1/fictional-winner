@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nursing Career Pathways &amp; Action Plan — plan your climb, from any rung to any goal</title>
+<meta name="description" content="An interactive career planner for nurses at every stage. Map the path from CNA to CRNA, build a milestone plan, and export a clean printable PDF. One-time $27.">
+
+<!-- ============================================================= -->
+<!--  SET YOUR CHECKOUT LINK HERE                                    -->
+<!--  Replace the value below with your real Payhip product URL      -->
+<!--  (e.g. https://payhip.com/b/aB3xY). Every "Get access" button   -->
+<!--  reads from this one place.                                     -->
+<!-- ============================================================= -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f1eff6; --bg-deep:#eae7f1;
+  --surface:#fbfaff; --surface-2:#f0edf6;
+  --ink:#37333f; --ink-soft:#6b6678; --ink-faint:#9c97aa;
+  --accent:#9b8fc0; --accent-deep:#7d6fa7; --accent-press:#685a90;
+  --wash:#e8e3f2; --pill:#e9e4f3;
+  --border:#ddd7ea; --border-soft:#e7e2f0;
+  --gold:#c7a24d;
+  --radius:20px; --radius-sm:13px;
+  --shadow:0 1px 2px rgba(44,40,55,.05), 0 14px 40px -20px rgba(44,40,55,.28);
+  --shadow-soft:0 1px 2px rgba(44,40,55,.04), 0 8px 22px -16px rgba(44,40,55,.22);
+  --maxw:1120px;
+  --ease:cubic-bezier(.4,.14,.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Nunito Sans",system-ui,sans-serif;
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif; font-weight:600; line-height:1.08; letter-spacing:-.01em; margin:0}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 26px}
+.eyebrow{
+  font-family:"Nunito Sans"; font-weight:800; font-size:12.5px;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--accent-deep);
+}
+
+/* ---- buttons ---- */
+.btn{
+  display:inline-flex; align-items:center; gap:.55em; cursor:pointer;
+  font-family:"Nunito Sans"; font-weight:800; font-size:16px;
+  padding:.86em 1.5em; border-radius:999px; border:1px solid transparent;
+  text-decoration:none; transition:transform .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease);
+}
+.btn svg{width:1.05em; height:1.05em; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.btn-primary{background:var(--accent-deep); color:#fff; box-shadow:0 10px 22px -12px rgba(90,78,120,.7)}
+.btn-primary:hover{background:var(--accent-press); transform:translateY(-2px); box-shadow:0 16px 30px -14px rgba(90,78,120,.75)}
+.btn-primary:active{transform:translateY(0)}
+.btn-ghost{background:var(--surface); color:var(--ink); border-color:var(--border)}
+.btn-ghost:hover{background:var(--surface-2); transform:translateY(-2px)}
+.btn-lg{font-size:18px; padding:1.02em 1.9em}
+:focus-visible{outline:3px solid var(--accent); outline-offset:3px; border-radius:6px}
+
+/* ---- nav ---- */
+.nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(243,244,238,.82); backdrop-filter:saturate(1.4) blur(12px);
+  border-bottom:1px solid var(--border-soft);
+}
+.nav-in{max-width:var(--maxw); margin:0 auto; padding:12px 26px; display:flex; align-items:center; gap:18px}
+.brand{display:flex; align-items:center; gap:11px; font-weight:800; letter-spacing:-.01em}
+.brand .mark{
+  width:38px; height:38px; border-radius:11px; flex:none;
+  background:var(--accent-deep); color:#fff; display:grid; place-items:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+}
+.brand .mark svg{width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round}
+.brand b{font-family:"Fraunces"; font-weight:600; font-size:18px}
+.brand span{display:block; font-family:"Nunito Sans"; font-weight:700; font-size:11px; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-faint); margin-top:1px}
+.nav-spacer{flex:1}
+.price-chip{
+  display:inline-flex; align-items:baseline; gap:.4em; padding:.42em .8em; border-radius:999px;
+  background:var(--pill); border:1px solid var(--border); font-weight:800; font-size:14px; color:var(--accent-deep);
+}
+.price-chip small{font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint)}
+@media(max-width:720px){ .price-chip{display:none} }
+
+/* ---- hero ---- */
+.hero{padding:64px 0 30px}
+.hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center}
+.hero h1{font-size:clamp(38px,5.4vw,60px); margin:.34em 0 0}
+.hero h1 em{font-style:italic; color:var(--accent-deep)}
+.hero .lede{font-size:19px; color:var(--ink-soft); margin-top:1.05em; max-width:34ch}
+.hero-cta{display:flex; flex-wrap:wrap; gap:13px; margin-top:1.7em}
+.trust{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:1.5em; color:var(--ink-soft); font-size:14.5px; font-weight:600}
+.trust span{display:inline-flex; align-items:center; gap:.5em}
+.trust svg{width:16px; height:16px; stroke:var(--accent-deep); fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round}
+.hero-anim{opacity:0; transform:translateY(14px); animation:rise .9s var(--ease) forwards}
+.hero-anim.d1{animation-delay:.05s}.hero-anim.d2{animation-delay:.14s}.hero-anim.d3{animation-delay:.23s}.hero-anim.d4{animation-delay:.32s}
+@keyframes rise{to{opacity:1; transform:none}}
+
+/* ---- signature: career ladder ---- */
+.ladder-card{
+  position:relative; background:linear-gradient(168deg,var(--surface),var(--surface-2));
+  border:1px solid var(--border); border-radius:26px; padding:26px 24px 22px;
+  box-shadow:var(--shadow);
+}
+.ladder-card .lc-eyebrow{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px}
+.ladder-card .lc-eyebrow b{font-family:"Fraunces"; font-weight:600; font-size:17px}
+.ladder{list-style:none; margin:0; padding:0; display:flex; flex-direction:column-reverse; gap:9px}
+.rung{
+  display:flex; align-items:center; gap:14px; padding:13px 15px; border-radius:14px;
+  background:var(--surface); border:1px solid var(--border-soft);
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease), background .3s;
+  transform-origin:left center;
+}
+.rung .step{
+  width:30px; height:30px; flex:none; border-radius:9px; display:grid; place-items:center;
+  font-family:"Fraunces"; font-weight:600; font-size:15px; color:#fff; background:var(--accent);
+}
+.rung .r-txt b{display:block; font-weight:800; font-size:15px; letter-spacing:-.01em}
+.rung .r-txt span{display:block; font-size:12.5px; color:var(--ink-soft); margin-top:1px}
+.rung:nth-child(1){margin-left:0}
+.rung:nth-child(2){margin-left:14px}
+.rung:nth-child(3){margin-left:28px}
+.rung:nth-child(4){margin-left:42px}
+.rung:nth-child(5){margin-left:56px; background:var(--accent-deep); border-color:var(--accent-deep)}
+.rung:nth-child(5) .step{background:#fff; color:var(--accent-deep)}
+.rung:nth-child(5) .r-txt b{color:#fff}
+.rung:nth-child(5) .r-txt span{color:rgba(255,255,255,.8)}
+.rung:hover{box-shadow:var(--shadow-soft); transform:translateX(4px)}
+.lc-foot{margin-top:16px; font-size:13px; color:var(--ink-soft); display:flex; align-items:center; gap:8px}
+.lc-foot svg{width:16px; height:16px; stroke:var(--accent-deep); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex:none}
+.float-pdf{
+  position:absolute; right:-14px; bottom:-20px; width:150px;
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  box-shadow:var(--shadow); padding:12px 13px; transform:rotate(3deg);
+}
+.float-pdf .fp-band{height:22px; border-radius:6px; background:var(--accent-deep); margin:-2px -3px 9px; display:flex; align-items:center; padding:0 8px}
+.float-pdf .fp-band i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.6);display:block}
+.float-pdf .l{height:6px; border-radius:3px; background:var(--wash); margin:6px 0}
+.float-pdf .l.s{width:60%} .float-pdf .l.m{width:85%}
+.float-pdf small{display:block; margin-top:9px; font-weight:800; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-deep)}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr; gap:44px}
+  .float-pdf{display:none}
+  .rung:nth-child(n){margin-left:0}
+}
+
+/* ---- stat strip ---- */
+.strip{border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); background:var(--bg-deep)}
+.strip-in{max-width:var(--maxw); margin:0 auto; padding:22px 26px; display:flex; flex-wrap:wrap; gap:14px 40px; justify-content:space-between}
+.stat b{font-family:"Fraunces"; font-weight:600; font-size:26px; color:var(--accent-deep)}
+.stat span{display:block; font-size:13px; font-weight:700; letter-spacing:.04em; color:var(--ink-soft); margin-top:2px}
+
+/* ---- sections ---- */
+section{padding:78px 0}
+.sec-head{max-width:640px; margin:0 auto 46px; text-align:center}
+.sec-head h2{font-size:clamp(28px,3.6vw,40px); margin-top:.28em}
+.sec-head p{color:var(--ink-soft); margin-top:.7em; font-size:18px}
+
+/* feature cards */
+.features{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.card{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:26px 24px; box-shadow:var(--shadow-soft);
+  transition:transform .22s var(--ease), box-shadow .22s var(--ease);
+}
+.card:hover{transform:translateY(-4px); box-shadow:var(--shadow)}
+.card .ic{
+  width:46px; height:46px; border-radius:13px; display:grid; place-items:center;
+  background:var(--wash); color:var(--accent-deep); margin-bottom:16px;
+}
+.card .ic svg{width:24px; height:24px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
+.card h3{font-size:20px}
+.card p{color:var(--ink-soft); font-size:15.5px; margin-top:.5em}
+@media(max-width:860px){ .features{grid-template-columns:1fr 1fr} }
+@media(max-width:560px){ .features{grid-template-columns:1fr} }
+
+/* preview / PDF band */
+.preview{background:var(--bg-deep); border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft)}
+.preview-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:52px; align-items:center}
+.preview-grid ul{list-style:none; padding:0; margin:1.4em 0 0}
+.preview-grid li{display:flex; gap:12px; align-items:flex-start; margin:14px 0; font-size:16.5px}
+.preview-grid li svg{width:22px; height:22px; flex:none; stroke:var(--accent-deep); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; margin-top:2px}
+.pdf-mock{
+  background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden;
+  box-shadow:var(--shadow); transform:rotate(-1.4deg);
+}
+.pdf-mock .pm-band{background:var(--accent-deep); color:#fff; padding:22px 24px; display:flex; align-items:center; gap:14px}
+.pdf-mock .pm-band .pm-ic{width:44px; height:44px; border-radius:50%; background:#fff; display:grid; place-items:center; flex:none}
+.pdf-mock .pm-band .pm-ic svg{width:24px; height:24px; stroke:var(--accent-deep); fill:none; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round}
+.pdf-mock .pm-band small{display:block; font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.82; font-weight:800}
+.pdf-mock .pm-band b{font-family:"Fraunces"; font-weight:600; font-size:20px}
+.pdf-mock .pm-body{padding:22px 24px 26px}
+.pm-goal{background:var(--wash); border-radius:11px; padding:14px 16px; margin-bottom:18px}
+.pm-goal em{font-family:"Fraunces"; font-style:italic; font-size:17px}
+.pm-goal small{display:block; font-weight:800; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-deep); margin-bottom:4px}
+.pm-row{display:flex; align-items:center; gap:12px; padding:11px 0; border-top:1px solid var(--border-soft)}
+.pm-row:first-of-type{border-top:0}
+.pm-row .pm-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+.pm-row .pm-l{flex:1; height:9px; border-radius:5px; background:var(--surface-2)}
+.pm-row .pm-l.short{max-width:42%}
+.pm-row .pm-pill{font-size:10px; font-weight:800; padding:.3em .7em; border-radius:999px; background:var(--pill); color:var(--accent-deep)}
+@media(max-width:860px){ .preview-grid{grid-template-columns:1fr; gap:38px} .pdf-mock{transform:none} }
+
+/* who / palette */
+.who-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+.who{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:22px 20px}
+.who b{display:block; font-family:"Fraunces"; font-weight:600; font-size:18px; margin-bottom:5px}
+.who p{color:var(--ink-soft); font-size:14.5px}
+@media(max-width:860px){ .who-grid{grid-template-columns:1fr 1fr} }
+@media(max-width:480px){ .who-grid{grid-template-columns:1fr} }
+.palette-row{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:30px}
+.sw{display:flex; flex-direction:column; align-items:center; gap:8px; font-size:12px; font-weight:700; color:var(--ink-soft)}
+.sw i{width:42px; height:42px; border-radius:12px; border:1px solid rgba(0,0,0,.06); display:block}
+
+/* inside / deliverables */
+.inside{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px}
+.chip{display:flex; align-items:center; gap:11px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:16px 18px; font-weight:700; font-size:15px}
+.chip svg{width:22px;height:22px;flex:none; stroke:var(--accent-deep); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+@media(max-width:860px){ .inside{grid-template-columns:1fr 1fr} }
+
+/* pricing */
+.pricing{display:grid; place-items:center}
+.price-card{
+  width:100%; max-width:480px; background:var(--surface); border:1px solid var(--border);
+  border-radius:24px; box-shadow:var(--shadow); overflow:hidden; text-align:center;
+}
+.price-card .pc-top{padding:34px 34px 8px}
+.price-card .tag{display:inline-block; background:var(--pill); color:var(--accent-deep); font-weight:800; font-size:12px; letter-spacing:.1em; text-transform:uppercase; padding:.42em .9em; border-radius:999px}
+.price-card .amount{font-family:"Fraunces"; font-weight:600; font-size:64px; line-height:1; margin:18px 0 4px}
+.price-card .amount sup{font-size:28px; top:-.7em; margin-right:2px}
+.price-card .once{color:var(--ink-soft); font-weight:700}
+.price-card ul{list-style:none; margin:24px 0 0; padding:0 34px; text-align:left}
+.price-card li{display:flex; gap:11px; align-items:flex-start; padding:9px 0; font-size:15.5px}
+.price-card li svg{width:21px;height:21px;flex:none; stroke:var(--accent-deep); fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; margin-top:2px}
+.price-card .pc-cta{padding:26px 34px 34px}
+.price-card .pc-cta .btn{width:100%; justify-content:center}
+.price-card .fine{font-size:13px; color:var(--ink-faint); margin-top:12px}
+
+/* faq */
+.faq{max-width:760px; margin:0 auto}
+.faq details{border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface); padding:4px 20px; margin-bottom:12px}
+.faq summary{cursor:pointer; font-weight:800; font-size:17px; padding:16px 0; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+"; font-family:"Fraunces"; font-size:24px; color:var(--accent-deep); transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--ink-soft); padding:0 0 18px; font-size:15.5px}
+
+/* final cta */
+.final{background:linear-gradient(165deg,var(--accent-deep),var(--accent-press)); color:#fff; border-radius:28px; text-align:center; padding:58px 30px; box-shadow:var(--shadow)}
+.final h2{color:#fff; font-size:clamp(28px,3.8vw,42px)}
+.final p{color:rgba(255,255,255,.86); margin:.7em auto 0; max-width:44ch; font-size:18px}
+.final .btn{margin-top:1.7em; background:#fff; color:var(--accent-press)}
+.final .btn:hover{background:#f3f6ef}
+.final small{display:block; margin-top:16px; color:rgba(255,255,255,.72); font-size:14px}
+
+/* footer */
+footer{padding:44px 0 60px; border-top:1px solid var(--border-soft); margin-top:20px}
+.foot-in{display:flex; flex-wrap:wrap; gap:18px; justify-content:space-between; align-items:center; color:var(--ink-soft); font-size:14px}
+.disc{max-width:var(--maxw); margin:22px auto 0; padding:0 26px; color:var(--ink-faint); font-size:12.5px; line-height:1.55}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; scroll-behavior:auto !important; transition:none !important}
+  .hero-anim{opacity:1; transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Nursing Career Pathways home">
+      <span class="mark"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-4.35-9-8.5C1.5 9.5 3 5.5 6.5 5.5c2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4C21 5.5 22.5 9.5 21 12.5 18.5 16.65 12 21 12 21Z"/><path d="M12 9v6M9 12h6"/></svg></span>
+      <span><b>Nursing Career Pathways</b><span>Career Compass &amp; Action Plan</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="price-chip">$27 <small>one&#8209;time</small></div>
+    <a class="btn btn-primary" href="https://payhip.com/b/nvo4P" data-checkout>Get instant access</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow hero-anim d1">Interactive planner · for nurses at every stage</div>
+      <h1 class="hero-anim d2">Plan your climb — from <em>any rung</em> to any goal.</h1>
+      <p class="lede hero-anim d3">A calm, guided career tool for nursing. Explore every path from CNA to CRNA, build a milestone plan that's truly yours, and turn it into a clean, printable PDF you can act on.</p>
+      <div class="hero-cta hero-anim d4">
+        <a class="btn btn-primary btn-lg" href="https://payhip.com/b/nvo4P" data-checkout>
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>
+          Get instant access — $27
+        </a>
+        <a class="btn btn-ghost btn-lg" href="#inside">See what's inside</a>
+      </div>
+      <div class="trust hero-anim d4">
+        <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Works offline</span>
+        <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> No login, no subscription</span>
+        <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Yours to keep forever</span>
+      </div>
+    </div>
+
+    <!-- signature: career ladder -->
+    <div class="ladder-card hero-anim d3">
+      <div class="lc-eyebrow"><b>The nursing ladder</b><span class="eyebrow">every route</span></div>
+      <ul class="ladder">
+        <li class="rung"><span class="step">1</span><span class="r-txt"><b>Foundations</b><span>CNA · LPN / LVN</span></span></li>
+        <li class="rung"><span class="step">2</span><span class="r-txt"><b>Registered Nurse</b><span>ADN or BSN + NCLEX&#8209;RN</span></span></li>
+        <li class="rung"><span class="step">3</span><span class="r-txt"><b>Bachelor's</b><span>RN&#8209;to&#8209;BSN completion</span></span></li>
+        <li class="rung"><span class="step">4</span><span class="r-txt"><b>Advanced Practice</b><span>NP · CRNA · CNM · CNS</span></span></li>
+        <li class="rung"><span class="step">5</span><span class="r-txt"><b>Doctoral</b><span>DNP · PhD in Nursing</span></span></li>
+      </ul>
+      <div class="lc-foot"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Start on any rung. Set any rung as your goal.</div>
+      <div class="float-pdf" aria-hidden="true">
+        <div class="fp-band"><i></i></div>
+        <div class="l m"></div><div class="l s"></div><div class="l m"></div><div class="l s"></div>
+        <small>PDF report</small>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STAT STRIP -->
+<div class="strip">
+  <div class="strip-in">
+    <div class="stat"><b>6</b><span>career tiers mapped</span></div>
+    <div class="stat"><b>15+</b><span>role-by-role guides</span></div>
+    <div class="stat"><b>∞</b><span>milestone plans you can build</span></div>
+    <div class="stat"><b>6</b><span>calming color themes</span></div>
+    <div class="stat"><b>1</b><span>printable PDF, one click</span></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What's inside the tool</div>
+      <h2>Everything you need to see the path — and start walking it.</h2>
+      <p>Five focused spaces, built around how a nursing career actually grows.</p>
+    </div>
+    <div class="features">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></div>
+        <h3>Explore pathways</h3>
+        <p>Plain-language guides to every role — CNA, ADN, BSN, accelerated and bridge routes, NP, CRNA, CNM, CNS, and beyond — with the exact credentials each one asks for.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Getting started</h3>
+        <p>A clear first-steps walkthrough and a realistic timeline, so a big goal like "become an RN" breaks down into the moves you make this month.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <h3>Trusted resources</h3>
+        <p>A curated shelf of the real bodies that matter — state boards, NCLEX, accreditation, and the national associations for each advanced role.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
+        <h3>Your action plan</h3>
+        <p>Name your goal and your "why," add milestones with target dates and status, and pin your next three concrete actions. It saves right in your browser.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg></div>
+        <h3>Printable PDF report</h3>
+        <p>One click turns your plan into a polished, recruiter-ready PDF — header, goal, a milestones table, and your next actions — to print or save.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="12" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22a2 2 0 0 1-2-2c0-2 3-3 3-6a3 3 0 0 0-3-3"/></svg></div>
+        <h3>Six calming themes</h3>
+        <p>Sage, powder blue, dusty rose, lavender, peach, and slate. Pick the palette that keeps you coming back to your plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW / PDF -->
+<section class="preview">
+  <div class="wrap preview-grid">
+    <div>
+      <div class="eyebrow">The payoff</div>
+      <h2 style="font-size:clamp(28px,3.4vw,38px); margin-top:.3em">Your plan, as a report you can hand to anyone.</h2>
+      <p style="color:var(--ink-soft); margin-top:.9em; font-size:17px">A vague ambition is easy to ignore. A one-page plan with dates and next steps is something you act on — and something an advisor, mentor, or admissions reviewer can actually read.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Clean header with your name, stage, and goal</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Milestones table with categories, targets, and status</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Your next three actions, front and center</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Opens in a new tab to print or save anywhere</li>
+      </ul>
+    </div>
+    <div class="pdf-mock" role="img" aria-label="Preview of the generated PDF action-plan report">
+      <div class="pm-band">
+        <span class="pm-ic"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-4.35-9-8.5C1.5 9.5 3 5.5 6.5 5.5c2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4C21 5.5 22.5 9.5 21 12.5 18.5 16.65 12 21 12 21Z"/><path d="M12 9v6M9 12h6"/></svg></span>
+        <span><small>Nursing career action plan</small><b>Maria's pathway plan</b></span>
+      </div>
+      <div class="pm-body">
+        <div class="pm-goal"><small>Goal · 4–6 years</small><em>Certified Registered Nurse Anesthetist</em></div>
+        <div class="pm-row"><span class="pm-dot"></span><span class="pm-l"></span><span class="pm-pill">In progress</span></div>
+        <div class="pm-row"><span class="pm-dot"></span><span class="pm-l short"></span><span class="pm-pill">Not started</span></div>
+        <div class="pm-row"><span class="pm-dot"></span><span class="pm-l"></span><span class="pm-pill">Not started</span></div>
+        <div class="pm-row"><span class="pm-dot"></span><span class="pm-l short"></span><span class="pm-pill">Planned</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Who it's for</div>
+      <h2>Wherever you're standing, there's a next step.</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who"><b>Future nurses</b><p>Deciding between ADN and BSN, or just figuring out where to begin.</p></div>
+      <div class="who"><b>Working RNs</b><p>Ready to specialize, finish a BSN, or move toward advanced practice.</p></div>
+      <div class="who"><b>CNAs &amp; aides</b><p>Already at the bedside and mapping the climb to licensure.</p></div>
+      <div class="who"><b>Career changers</b><p>Bringing a prior degree into an accelerated route to nursing.</p></div>
+    </div>
+    <div class="palette-row" aria-label="The six included color themes">
+      <div class="sw"><i style="background:#7d9b76"></i>Sage</div>
+      <div class="sw"><i style="background:#7fa1bd"></i>Powder</div>
+      <div class="sw"><i style="background:#bd8b95"></i>Rose</div>
+      <div class="sw"><i style="background:#9b8fc0"></i>Lavender</div>
+      <div class="sw"><i style="background:#d79f7a"></i>Peach</div>
+      <div class="sw"><i style="background:#8793a3"></i>Slate</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIDE / DELIVERABLES -->
+<section id="inside" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">In your download</div>
+      <h2>One file. No installs. No accounts.</h2>
+      <p>After checkout you get a single web app that opens in any modern browser — on a laptop, tablet, or phone.</p>
+    </div>
+    <div class="inside">
+      <div class="chip"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> The full interactive app</div>
+      <div class="chip"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Quick-start guide</div>
+      <div class="chip"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg> One-click PDF export</div>
+      <div class="chip"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg> Free updates for life</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="padding-top:20px">
+  <div class="wrap pricing">
+    <div class="price-card">
+      <div class="pc-top">
+        <span class="tag">One-time purchase</span>
+        <div class="amount"><sup>$</sup>27</div>
+        <div class="once">Pay once. Keep it forever.</div>
+      </div>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> The complete Nursing Career Pathways app</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Every pathway, from CNA to CRNA and beyond</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Unlimited saved plans &amp; printable PDF reports</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Six themes · works fully offline · no login</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Instant download &amp; free future updates</li>
+      </ul>
+      <div class="pc-cta">
+        <a class="btn btn-primary btn-lg" href="https://payhip.com/b/nvo4P" data-checkout>Get instant access</a>
+        <div class="fine">Secure checkout through Payhip · instant delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Good to know</div>
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>How do I use it after buying?</summary><p>You'll download a single file. Double-click it and it opens right in your web browser — nothing to install and no account to make. Everything works the same offline.</p></details>
+      <details><summary>Where is my plan saved?</summary><p>Your plan is stored privately in your own browser on your device. Nothing is uploaded anywhere. Use the built-in PDF export to keep a permanent copy or move it between devices.</p></details>
+      <details><summary>Will it work on my phone or tablet?</summary><p>Yes. The layout adapts to any screen, so you can plan on a laptop and review on your phone.</p></details>
+      <details><summary>Is this official advice from a nursing board?</summary><p>No. It's an educational planning tool that organizes widely available information and links you to the official bodies. Requirements vary by state and program, so always confirm the specifics with your state board of nursing and each school.</p></details>
+      <details><summary>Do updates cost extra?</summary><p>No. When the tool is improved, you get the updated file at no additional cost.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="final">
+      <h2>Your career deserves a plan, not a maybe.</h2>
+      <p>Map the path, set your milestones, and print the report today.</p>
+      <a class="btn btn-lg" href="https://payhip.com/b/nvo4P" data-checkout>Get instant access — $27</a>
+      <small>One-time payment · instant download · yours to keep</small>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="brand">
+      <span class="mark"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-4.35-9-8.5C1.5 9.5 3 5.5 6.5 5.5c2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4C21 5.5 22.5 9.5 21 12.5 18.5 16.65 12 21 12 21Z"/><path d="M12 9v6M9 12h6"/></svg></span>
+      <span><b>Nursing Career Pathways</b><span>Career Compass &amp; Action Plan</span></span>
+    </div>
+    <div>&copy; 2026 · Made for nurses charting the climb.</div>
+  </div>
+  <p class="disc">Educational tool only. Not affiliated with any nursing board, school, or certifying body, and not a substitute for professional or licensure advice. Program names, credentials, and requirements change and vary by state — verify every requirement with your state board of nursing and each accredited program before making decisions.</p>
+</footer>
+
+</body>
+</html>
